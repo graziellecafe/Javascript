@@ -21,4 +21,15 @@ const namePerson = {
     secondName:'Fernandes',
 };
 
-console.log(namePerson.firstName, namePerson.secondName);
+
+// Nossos objetos tem atributos, exemplo da carteira: zipper, cor 
+// Ao invés de se chamar função, você utiliza método
+
+// Classes que obtem objetos, que tem atributos (ou propriedades -> representam elementos da classe), que tem MediaStreamAudioDestinationNode
+
+
+// this: modificar um método a partir da própria classe 
+
+// Métodos alteram apenas a sua classe, apenas só se elas se relacionarem
+
+// Site: devmedia
