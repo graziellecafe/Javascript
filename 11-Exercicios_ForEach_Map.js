@@ -9,7 +9,7 @@
 // Resolvendo via Map
 function triploArrayOriginal(){
     const entrada = [1,2,3,4];
-    const saida = entrada.map(function(numero){
+    const saida = entrada.map(numero => {
         return numero*3;
     })
     console.log(saida);
