@@ -1,5 +1,34 @@
 # Javascript
-Estudos de Javascript com a mentoria da Camila Tropia. 
+Estudos de Javascript através da:
+- Mentoria da Camila Trópia; 
+- Curso Introdução ao ES6 da Digital Innovation One; 
+- Curso Objetos e Arrays da Alura. 
+
+# História e Conceitos do Javascript
+## ECMAScript
+### O que é o ECMAScript 6
+ECMAScript 6, ou ECMAScript 2015 é somente a padronização da linguagem Javascript. Esta versão lançada no mercado
+em 2015, foi um divisor de águas na evolução desta linguagem de programação, trazendo recursos e funcionalidades como novas maneiras de iterar objetos, declaração de variáveis com let e const e modularização de classes. 
+
+Criado pelo Brendan Eich, antigo funcionário da Netscape que criou uma linguagem de programação baseada em scripts, de forma a trazer mais vida ao HTML. 
+
+O ECMAScript é uma padronização da linguagem. 
+
+Novas features com o ECMA6: 
+* Funções *arrow*; 
+* Funções *map*, *filter* e *reduce*; 
+* Funções *some* e *every*; 
+* Função *find*; 
+* Comandos *const* e *let*, entre outros. 
+
+Processo de adição de novas features no JS: https://github.com/tc39
+
+### ES2018
+Novas features como: 
+
+* Operadores rest/spread; 
+* Iteração assíncrona; 
+* Promise.prototype.finally().
 
 
 # Laços de repetição 
