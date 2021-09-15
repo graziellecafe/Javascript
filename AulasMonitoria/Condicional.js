@@ -58,7 +58,7 @@ function aprovacao(media, frequencia){
       }
       if (sexo === 'F'){
           conta = (62.1 * altura) - 44.7
-          console.log(`Olá ${nome}! O seu peso ideial é ${conta}`);
+          console.log(`Olá ${nome}! O seu peso ideial é ${conta}`); 
       }
   }
   

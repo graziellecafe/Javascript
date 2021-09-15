@@ -11,7 +11,7 @@ let imprimeMutiplos = () => {
 
 imprimeMutiplos();
 
-// Exercício 02
+// Exercício 02 
 // Um engenheiro precisa fazer o grafico da função f (x) = x2+1 / x+2 .
 // Para isto, ele quer criar um progrma que gere a tabela de pares ordenados (x, y) e, 
 // em seguida, construa o gráfico a partir desta tabela. Vamos ajudá-lo na primeira parte desta tarefa, 

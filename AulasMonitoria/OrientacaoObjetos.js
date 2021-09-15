@@ -11,7 +11,7 @@ const person = {
     gender: 'female',
     interests: ['music', 'crochet'],
 };
-
+ 
 console.log(`Her name is ${person.name[0]} ${person.name[1]}, and her interests is ${person.interests}`);
 
 

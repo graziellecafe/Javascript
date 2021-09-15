@@ -7,27 +7,27 @@
 // Dica da aula: charAt() -- retorna o caracter de um index específico em uma string
 // let estadoCivil = 'casado'; 
 
-// function confereEstadoCivil (estadoCivil){
-//     switch (estadoCivil.charAt(0)){
-//         case 'c': case 'C':
-//             console.log('Casado');
-//             break;
-//         case 's': case 'S':
-//             console.log('Solteiro');
-//             break;
-//         case 'v': case 'V':
-//             console.log('Viúvo');
-//             break;
-//         case 'd': case 'D':
-//             console.log('Divorciado');
-//             break;
-//         default: 
-//             console.log('Inválido');
-//             break;
-//     }
-// }
+function confereEstadoCivil (estadoCivil){
+    switch (estadoCivil.charAt(0)){
+        case 'c': case 'C':
+            console.log('Casado');
+            break;
+        case 's': case 'S':
+            console.log('Solteiro');
+            break;
+        case 'v': case 'V':
+            console.log('Viúvo');
+            break;
+        case 'd': case 'D':
+            console.log('Divorciado');
+            break;
+        default: 
+            console.log('Inválido');
+            break;
+    }
+}
 
-// confereEstadoCivil(estadoCivil);
+confereEstadoCivil(estadoCivil);
 
 
 // Exercício 02 
@@ -39,31 +39,31 @@
 // salário antigo, o novo salário e a diferença entre ambos.
 // Utilizar o comando switch
 
-// 101 - 5% 
-// 102 - 7.5% 
-// 103 - 10% 
-// function aumentoSalario (salario, codigo){
-//     let novoSalario;
-//     switch(codigo){
-//         case 101:
-//             novoSalario = salario + (salario*(5/100));
-//             console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
-//             break;
-//         case 102:
-//             novoSalario = salario + (salario*(7.5/100));
-//             console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
-//             break;
-//         case 103:
-//             novoSalario = salario + (salario*(10/100));
-//             console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
-//             break;
-//         default:
-//             novoSalario = salario + (salario*(15/100));
-//             console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
-//     }
-// }
+101 - 5% 
+102 - 7.5% 
+103 - 10% 
+function aumentoSalario (salario, codigo){
+    let novoSalario;
+    switch(codigo){
+        case 101:
+            novoSalario = salario + (salario*(5/100));
+            console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
+            break;
+        case 102:
+            novoSalario = salario + (salario*(7.5/100));
+            console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
+            break;
+        case 103:
+            novoSalario = salario + (salario*(10/100));
+            console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
+            break;
+        default:
+            novoSalario = salario + (salario*(15/100));
+            console.log(`Seu salário antigo é ${salario}, seu novo salário é ${novoSalario} e a diferença é ${novoSalario - salario}`);
+    }
+}
 
-// aumentoSalario(1000, 108);
+aumentoSalario(1000, 108);
 
 
 // Exercício 03 
@@ -76,36 +76,36 @@
 // zero e dez e calcule a média após o descarte da maior e da menor nota.
 
 // Dica: Função da biblioteca Math do Javascript que calcula o máximo ou mínimo -- Math.max | Math.min
-// function notaOlimpiada (nota1, nota2, nota3, nota4){
-//     let max = Math.max(nota1, nota2, nota3, nota4);
-//     let min = Math.min(nota1, nota2, nota3, nota4);
+function notaOlimpiada (nota1, nota2, nota3, nota4){
+    let max = Math.max(nota1, nota2, nota3, nota4);
+    let min = Math.min(nota1, nota2, nota3, nota4);
 
-//     if ((max === nota1 || min === nota1) && (max === nota2 || min === nota2)){
-//         console.log(`A nota final é ${(nota3 + nota4)/2}`);
-//     }
+    if ((max === nota1 || min === nota1) && (max === nota2 || min === nota2)){
+        console.log(`A nota final é ${(nota3 + nota4)/2}`);
+    }
 
-//     if ((max === nota1 || min === nota1) && (max === nota3 || min === nota3)){
-//         console.log(`A nota final é ${(nota2 + nota4)/2}`);
-//     }
+    if ((max === nota1 || min === nota1) && (max === nota3 || min === nota3)){
+        console.log(`A nota final é ${(nota2 + nota4)/2}`);
+    }
 
-//     if ((max === nota1 || min === nota1) && (max === nota4 || min === nota4)){
-//         console.log(`A nota final é ${(nota2 + nota3)/2}`);
-//     }
+    if ((max === nota1 || min === nota1) && (max === nota4 || min === nota4)){
+        console.log(`A nota final é ${(nota2 + nota3)/2}`);
+    }
 
-//     if ((max === nota2 || min === nota2) && (max === nota3 || min === nota3)){
-//         console.log(`A nota final é ${(nota1 + nota4)/2}`);
-//     }
+    if ((max === nota2 || min === nota2) && (max === nota3 || min === nota3)){
+        console.log(`A nota final é ${(nota1 + nota4)/2}`);
+    }
 
-//     if ((max === nota2 || min === nota2) && (max === nota4 || min === nota4)){
-//         console.log(`A nota final é ${(nota1 + nota3)/2}`);
-//     }
+    if ((max === nota2 || min === nota2) && (max === nota4 || min === nota4)){
+        console.log(`A nota final é ${(nota1 + nota3)/2}`);
+    }
 
-//     if ((max === nota3 || min === nota3) && (max === nota4 || min === nota4)){
-//         console.log(`A nota final é ${(nota1 + nota2)/2}`);
-//     }
-// } 
+    if ((max === nota3 || min === nota3) && (max === nota4 || min === nota4)){
+        console.log(`A nota final é ${(nota1 + nota2)/2}`);
+    }
+} 
 
-// notaOlimpiada(3, 5, 1, 9)
+notaOlimpiada(3, 5, 1, 9)
 
 
 // Exercício 04

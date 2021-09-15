@@ -17,4 +17,4 @@ console.log(frutas); // Elimina o primeiro elemento do array
 frutas.push('Manga', 'Limão', 'Laranja');
 console.log(`O novo array é: ${frutas}`);
 
-console.log(`A posição do elemento Limão é: ${frutas.indexOf('Limão')}`);
+console.log(`A posição do elemento Limão é: ${frutas.indexOf('Limão')}`); 

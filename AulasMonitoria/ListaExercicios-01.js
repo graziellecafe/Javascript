@@ -11,7 +11,7 @@ function somaQuadrados() {
     }
     console.log(`A soma dos quadrados dos 100 primeiros números inteiros é igual a ${soma}`);
 }
-
+ 
 somaQuadrados();
 
 /*                                      

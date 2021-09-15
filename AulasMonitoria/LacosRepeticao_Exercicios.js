@@ -87,7 +87,7 @@ citiesWithNumber()
 
 
 // ---------------- EXERCÍCIOS --------------------
-// For each: não tem retorno 
+// For each: não tem retorno  
 function forEachToLearnMaiusculo(){
     const nomes = ['Whinds', 'Freeway', 'Teste', 'Maria']; 
     const nomesForEachRetorno = nomes.forEach(function(nome){ // a função chama o (item, posição do item)            
