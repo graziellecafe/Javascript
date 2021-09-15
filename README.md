@@ -2,7 +2,7 @@
 Estudos de Javascript através da:
 - Mentoria da Camila Trópia; 
 - Curso Introdução ao ES6 da Digital Innovation One; 
-- Curso Objetos e Arrays da Alura. 
+- Cursos sobre Objetos e Arrays da Alura. 
 
 # História e Conceitos do Javascript
 ## ECMAScript
@@ -30,6 +30,77 @@ Novas features como:
 * Iteração assíncrona; 
 * Promise.prototype.finally().
 
+## Conceitos Javascript
+### Linguagem interpretada
+O código no Javascript é executado de cima para baixo e o resultado dessa execução no código é imediatamente retornado. 
+
+### Linguagem compilada
+Precisa passar por um processo antes de ser executado, de transformação de arquivos para execução. Exemplo: C e C++ que são compilados em linguagem Assembly e posteriormente executados pelo computador. 
+
+### Tipos de tipagem
+O JavaScript é uma linguagem de **tipagem fraca e dinâmica** ou seja, não há verificação de todas as operações no JavaScript, ou seja, é possível utilizar o operador de '+' em um número e uma string sem que haja um erro. 
+
+Utilizando o operador '+' como ação de concatenar um número e uma string:
+```
+var meuNumero = 20; 
+var meuTexto = 'Exemplo'; 
+
+console.log(meuNumero + meuTexto);
+
+// Saída: '20Exemplo'
+```
+Python por exemplo é uma linguagem de **tipagem forte**, portanto ao realizar o mesmo código acima é exibido no terminal a não possibilidade de 'soma' entre um número e uma string. *unsupported operand type(s) for +: 'int' and 'str'.
+
+Código em Python: 
+```
+meu_numero = 30; 
+meu_texto = 'Exemplo'; 
+print(meu_numero + meu_texto);
+```
+
+O JavaScript também é definido pela **tipagem dinâmica**, ou seja, você não precisa declarar o tipo de dado que será armazenado na variável, trazendo uma maior flexibilidade na escrita do código, mas podendo trazer problemas como erros por redeclaração da mesma variável com valor de outro tipo. 
+
+Exemplo: 
+```
+var minhaVariavel = 10; 
+ 
+minhaVariavel = 'Texto'; 
+
+console.log(minhaVariavel);
+
+// Saída: Texto
+```
+
+Já em **tipagem estática**, é obrigatório a declaração do tipo de dado que a variável irá receber, antes de atribuir valor a ela. 
+
+## Typescript
+O Typescript é um super 'set' do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
+
+*Site Typescript*: https://www.typescriptlang.org/
+
+## Funções de primeira classe e ordem maior
+A função pode ser atribuida a uma variável, pode ser atribuida a uma estrutura de dados (seja um object ou um array) e pode ser passada por outro argumento ou até mesmo ser passada para outras funções. 
+
+Exemplo: 
+```
+// Declarando uma função: 
+function getName(){
+    return 'Grazielle Amanda do Carmo Café';
+}
+
+console.log(getName());
+// Saída: Grazielle Amanda do Carmo Café
+
+
+
+// Passando a função para uma constante e chamando uma função dentro de outra
+function logFn(fn){
+    console.log(fn());
+}
+
+const logFnResult = logFn; 
+logFnResult(getName);
+```
 
 # Laços de repetição 
 **Switch Case** 
