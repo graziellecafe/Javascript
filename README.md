@@ -4,10 +4,19 @@ Estudos de Javascript através da:
 - Curso Introdução ao ES6 da Digital Innovation One; 
 - Cursos sobre Objetos e Arrays da Alura. 
 
-# História e Conceitos do Javascript
-## ECMAScript
-### O que é o ECMAScript 6
-ECMAScript 6, ou ECMAScript 2015 é somente a padronização da linguagem Javascript. Esta versão lançada no mercado
+# Algoritmos
+Algoritmos são sequências de passos que seguimos com a intenção de atingir um objetivo. 
+
+Exemplo: atravessar a rua, fazer um bolo, definir com clareza ou definir qual critério usar para aprovar ou reprovar um aluno. 
+
+No desenvolvimento de um algoritmo, devemos definir com clareza e forma precisa o conjunto de regras ou instruções que serão utilizadas para resolver aquele problema em específico. 
+
+A *lógica de programação*, é onde aplicamos todos os conceitos de algoritmo, a definição do passo-a-passo e transferimos toda a lógica do algoritmo desenvolvido para uma linguagem de programação. Uma linguagem de programação é um meio estruturado para passar instruções para a máquina. 
+
+Exemplos de linguagem de programação: C, Java, PHP, Python, Javascript, entre outras. Cada uma delas tem suas características, particularidades e cenários de aplicação. 
+# História: ECMAScript
+**ECMAScript 6**
+*ECMAScript 6*, ou *ECMAScript 2015* é somente a padronização da linguagem Javascript. Esta versão lançada no mercado
 em 2015, foi um divisor de águas na evolução desta linguagem de programação, trazendo recursos e funcionalidades como novas maneiras de iterar objetos, declaração de variáveis com let e const e modularização de classes. 
 
 Criado pelo Brendan Eich, antigo funcionário da Netscape que criou uma linguagem de programação baseada em scripts, de forma a trazer mais vida ao HTML. 
@@ -23,24 +32,26 @@ Novas features com o ECMA6:
 
 Processo de adição de novas features no JS: https://github.com/tc39
 
-### ES2018
+**ES2018**
 Novas features como: 
 
 * Operadores rest/spread; 
 * Iteração assíncrona; 
 * Promise.prototype.finally().
 
-## Conceitos Javascript
-### Linguagem interpretada
+# Tipos de Linguagem
+## Linguagem interpretada
 O código no Javascript é executado de cima para baixo e o resultado dessa execução no código é imediatamente retornado. 
 
-### Linguagem compilada
+## Linguagem compilada
 Precisa passar por um processo antes de ser executado, de transformação de arquivos para execução. Exemplo: C e C++ que são compilados em linguagem Assembly e posteriormente executados pelo computador. 
 
-### Tipos de tipagem
-O JavaScript é uma linguagem de **tipagem fraca e dinâmica** ou seja, não há verificação de todas as operações no JavaScript, ou seja, é possível utilizar o operador de '+' em um número e uma string sem que haja um erro. 
+
+# Tipos de Tipagem
+O JavaScript é uma linguagem de *tipagem fraca e dinâmica* ou seja, não há verificação de todas as operações no JavaScript, ou seja, é possível utilizar o operador de '+' em um número e uma string sem que haja um erro. 
 
 Utilizando o operador '+' como ação de concatenar um número e uma string:
+
 ```
 var meuNumero = 20; 
 var meuTexto = 'Exemplo'; 
@@ -49,7 +60,8 @@ console.log(meuNumero + meuTexto);
 
 // Saída: '20Exemplo'
 ```
-Python por exemplo é uma linguagem de **tipagem forte**, portanto ao realizar o mesmo código acima é exibido no terminal a não possibilidade de 'soma' entre um número e uma string. *unsupported operand type(s) for +: 'int' and 'str'.
+
+Python por exemplo é uma linguagem de *tipagem forte*, portanto ao realizar o mesmo código acima é exibido no terminal a não possibilidade de 'soma' entre um número e uma string. *unsupported operand type(s) for +: 'int' and 'str'.
 
 Código em Python: 
 ```
@@ -58,7 +70,7 @@ meu_texto = 'Exemplo';
 print(meu_numero + meu_texto);
 ```
 
-O JavaScript também é definido pela **tipagem dinâmica**, ou seja, você não precisa declarar o tipo de dado que será armazenado na variável, trazendo uma maior flexibilidade na escrita do código, mas podendo trazer problemas como erros por redeclaração da mesma variável com valor de outro tipo. 
+O JavaScript também é definido pela *tipagem dinâmica*, ou seja, você não precisa declarar o tipo de dado que será armazenado na variável, trazendo uma maior flexibilidade na escrita do código, mas podendo trazer problemas como erros por redeclaração da mesma variável com valor de outro tipo. 
 
 Exemplo: 
 ```
@@ -71,15 +83,23 @@ console.log(minhaVariavel);
 // Saída: Texto
 ```
 
-Já em **tipagem estática**, é obrigatório a declaração do tipo de dado que a variável irá receber, antes de atribuir valor a ela. 
+Já em *tipagem estática*, é obrigatório a declaração do tipo de dado que a variável irá receber, antes de atribuir valor a ela. 
 
-## Typescript
-O Typescript é um super 'set' do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
+# Conceitos
+## Variáveis
+Armazenamos os nossos dados em variáveis.
 
-*Site Typescript*: https://www.typescriptlang.org/
+## Tipos de Dados
+Para que um programa execute de forma correta, ele precisa receber dados corretos. 
 
-# Funções
-## Funções de primeira classe e ordem maior
+Exemplo: números para fazer contas, textos para exibir um nome, guardar um nome num banco de dados, etc. 
+
+## Operadores
+Exemplo: realizar a comparação para verificar se dois dados são iguais. A senha 'imputada' é igual a senha que está no banco?
+
+## Funções
+As funções são peças chaves para que nosso programa se comporte da maneira que queiramos. E elas também servem para isolar algumas partes do código, além de reaproveitar e organizar melhor nosso código. 
+### Funções de primeira classe e ordem maior
 A função pode ser atribuida a uma variável, pode ser atribuida a uma estrutura de dados (seja um object ou um array) e pode ser passada por outro argumento ou até mesmo ser passada para outras funções. 
 
 Exemplo: 
@@ -103,8 +123,8 @@ const logFnResult = logFn;
 logFnResult(getName);
 ```
 
-## Declaração de funções
-### Formato padrão
+### Declaração de funções
+#### Formato padrão
 *Declaração da função no formato padrão*
 ```
 function fn(){
@@ -115,7 +135,7 @@ function fn(){
 console.log(fn());
 ```
 
-### Arrow Function
+#### Arrow Function
 *Declaração no formato de arrow function*
 ```
 const arrowFunction = () => 'Code here using arrow function';
@@ -132,8 +152,8 @@ console.log(arrowFunctionMoreExpressions());
 ```
 
 
-# Condicionais
-## Switch Case
+## Condicionais
+### Switch Case
 A condicional switch avalia uma expressão, combinando o valor da expressão para uma cláusula case, 
 e executa as instruções associadas ao case. 
 
@@ -146,8 +166,8 @@ switch (exp){
 ```
 
 
-# Laços de repetição 
-## While 
+## Laços de repetição 
+## #While 
 Estrutura condição while
 ```
 while (condição) {
@@ -214,3 +234,19 @@ console.log('Retorno map: ', retornoMap);
 Enquanto o forEach foi feito para ser uma alternativa ao loop for, o map foi feito para fazemos operação de transformação/alteração nos itens de um array e ao final dessas operações ter uma lista nova com a mesma quantidade de itens da lista base.
 
 Caso queiramos somente uma forma mais elegante para trabalhar com o for usamos o .forEach e caso queiramos transformar/alterar valores ou mesmo concatenar operações em cima de arrays o .map é o mais indicado.
+
+
+# Typescript
+O Typescript é um super 'set' do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
+
+*Site Typescript*: https://www.typescriptlang.org/
+
+# NodeJS
+## Definição
+O Node.JS pode ser definido como um ambiente de execução Javascript *server-side*, ou seja, do lado do servidor. Isso significa que o Node.js é possível criar aplicações Javascript para rodar como uma aplicação *standalone* (ou seja, programas autossuficientes) em uma máquina, não dependendo de um browser para a execução. 
+
+## Vantagens
+* O principal objetivo de sua adoção é a *alta capacidade de escala*; 
+* Arquitetura; 
+* Flexibilidade; 
+* Baixo custo, o que o torna uma boa escolha para implementação de [microsserviços](https://www.opus-software.com.br/micro-servicos-arquietura-monolitica/) e componentes da arquitetura [serveless](https://www.opus-software.com.br/serverless-applications/)
