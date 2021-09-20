@@ -237,16 +237,38 @@ Caso queiramos somente uma forma mais elegante para trabalhar com o for usamos o
 
 
 # Typescript
-O Typescript é um super 'set' do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
+O Typescript é um **superset** do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
 
 *Site Typescript*: https://www.typescriptlang.org/
 
 # NodeJS
 ## Definição
-O Node.JS pode ser definido como um ambiente de execução Javascript *server-side*, ou seja, do lado do servidor. Isso significa que o Node.js é possível criar aplicações Javascript para rodar como uma aplicação *standalone* (ou seja, programas autossuficientes) em uma máquina, não dependendo de um browser para a execução. 
+O Node.JS pode ser definido como um ambiente de execução Javascript *server-side*, ou seja, do lado do servidor. Isso significa que o Node.js é possível criar aplicações Javascript para rodar como uma aplicação *standalone* (ou seja, programas autossuficientes) em uma máquina, não dependendo de um browser para a execução, diferente de uma aplicação de Angular, React que dependem do browser.
+
+## Arquitetura
+Baseado na arquitetura **event-driven**. Esta arquitetura é um paradigma de software que promove a produção, detecção, consumo e reação a evento, sendo esses eventos podendo ser definidos como uma "mudança significativa no estado". Ou seja, o que é produzido, publicado, propagado, detectado ou consumido é uma mensagem, tipicamente assíncrona, ou seja, uma notificação do evento. Os eventos não transitam, eles apenas ocorrem. 
+
+Ou seja, o Node.JS reage a eventos, mas baseado nas notificações de evento.  Se uma requisição é realizada pela API, ela recebeu uma mensagem de que um evento aconteceu. 
+
+A arquitetura interna, a **event-driven** vai criar mecanismos para lidar com este evento recebido através da mensagem.
+
+## Compilação (?) e execução
+O Javascript por si só é uma linguagem de programação **interpretada**, e não **compilada**. Entretanto, o Node.JS tem um interpretador de código JavaScript, o V8, também chamado de máquina virtual, ou engine. O V8 foi desenvolvido pela Google, e utiliza seu navegador (Google Chrome). Foi escrito na linguagem C++ e distribuída no regime de código aberto.
+
+Ou seja, recebe o código em JavaScript e realiza um processo de compilação real, para a linguagem de máquina. 
+Ex: Compila na linguagem de máquina nativa do Windows. 
+
+O fato de voce ter um código compilado, rodando na sua máquina, dá um ganho de desempenho absurdo, pois não estamos mais partindo da premissa da interpretação do código, já vamos ter toda a estrutura de um arquivo executável que ocorre naturalmente nas máquinas, como por exemplo os registradores do processador, o contador de programa e todo aquele fluxo que faz com que você tenha muita experiência na hora de executar um programa compilado. 
 
 ## Vantagens
 * O principal objetivo de sua adoção é a *alta capacidade de escala*; 
 * Arquitetura; 
 * Flexibilidade; 
 * Baixo custo, o que o torna uma boa escolha para implementação de [microsserviços](https://www.opus-software.com.br/micro-servicos-arquietura-monolitica/) e componentes da arquitetura [serveless](https://www.opus-software.com.br/serverless-applications/)
+* Tem um dos maiores ecossistemas do mundo (muitas bibliotecas disponíveis)
+
+## npm 
+O *npm* é o Gerenciador de Pacotes do Node (Node Package Manager). 
+
+O *npm* funciona baseado em dois ofícios: 
+* É um repositório amplamente usado para a publicação de projetos Node.JS de código aberto (open-source). Isso significa que ele é uma plataforma online onde qualquer pessoa pode publicar e compartilhar ferramentas escritas em Javascript.
