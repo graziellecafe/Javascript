@@ -1,8 +1,8 @@
 # Javascript
 Estudos de Javascript através da:
-- Mentoria da Camila Trópia; 
-- Curso Introdução ao ES6 da Digital Innovation One; 
-- Cursos sobre Objetos e Arrays da Alura. 
+- Mentoria da Camila Trópia e Fagner Bernardo (**dti digital**); 
+- Curso Introdução ao ES6 da plataforma **Digital Innovation One**; 
+- Cursos sobre Fundamentos, Objetos e Arrays da plataforma **Alura**. 
 
 # Algoritmos
 Algoritmos são sequências de passos que seguimos com a intenção de atingir um objetivo. 
