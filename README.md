@@ -298,7 +298,11 @@ Caso queiramos somente uma forma mais elegante para trabalhar com o for usamos o
 # Typescript
 O Typescript é um **superset** do JavaScript. Além dele conseguir adicionar tipos, ele adiciona funcionalidades que o JavaScript não tem. É possível adicionar interfaces, enum, tipos genéricos, etc. 
 
-*Site Typescript*: https://www.typescriptlang.org/
+[Site Typescript] (https://www.typescriptlang.org/)
+
+## Execução de um arquivo TypeScript
+* tsc .\<nome_do_arquivo.ts>
+* node .\<nome_do_arquivo.js>
 
 # NodeJS
 ## Definição
@@ -352,9 +356,20 @@ node -v
 ## Class
 A declaração **class** cria uma nova classe com dado nome usando a herança do protótipo base. 
 
-Sintaxe 
+### Sintaxe 
 ```
 class name [extends] {
     // class body
 }
+```
+
+Exemplo de implementação
+```
+class contaBancaria {
+    Nome: string; 
+    Idade: number; 
+}
+
+const contaBancaria = new ContaBancaria();
+console.log(contaBancaria);
 ```
