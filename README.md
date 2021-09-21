@@ -35,16 +35,16 @@ Novas features como:
 * Iteração assíncrona; 
 * Promise.prototype.finally().
 
-# Tipos de Linguagem
+# Linguagem e Tipagem
 ## Linguagem interpretada
-O código no Javascript é executado de cima para baixo e o resultado dessa execução no código é imediatamente retornado. 
+O código no JavaScript é executado de cima para baixo e o resultado dessa execução no código é imediatamente retornado. 
 
 ## Linguagem compilada
 Precisa passar por um processo antes de ser executado, de transformação de arquivos para execução. Exemplo: C e C++ que são compilados em linguagem Assembly e posteriormente executados pelo computador. 
 
 
-# Tipos de Tipagem
-O JavaScript é uma linguagem de *tipagem fraca e dinâmica* ou seja, não há verificação de todas as operações no JavaScript, ou seja, é possível utilizar o operador de '+' em um número e uma string sem que haja um erro. 
+## Tipagem fraca | forte & dinâmica | estática 
+O JavaScript é uma linguagem de **tipagem fraca e dinâmica** ou seja, não há verificação de todas as operações no JavaScript, ou seja, é possível utilizar o operador de '+' em um número e uma string sem que haja um erro. 
 
 Utilizando o operador '+' como ação de concatenar um número e uma string:
 
@@ -57,7 +57,9 @@ console.log(meuNumero + meuTexto);
 // Saída: '20Exemplo'
 ```
 
-Python por exemplo é uma linguagem de *tipagem forte*, portanto ao realizar o mesmo código acima é exibido no terminal a não possibilidade de 'soma' entre um número e uma string. *unsupported operand type(s) for +: 'int' and 'str'.
+Python por exemplo é uma linguagem de **tipagem forte**, portanto ao realizar o mesmo código acima é exibido no terminal a não possibilidade de soma entre um número e uma string. 
+
+Terminal: *unsupported operand type(s) for +: 'int' and 'str'*.
 
 Código em Python: 
 ```
@@ -66,24 +68,22 @@ meu_texto = 'Exemplo';
 print(meu_numero + meu_texto);
 ```
 
-O JavaScript também é definido pela *tipagem dinâmica*, ou seja, você não precisa declarar o tipo de dado que será armazenado na variável, trazendo uma maior flexibilidade na escrita do código, mas podendo trazer problemas como erros por redeclaração da mesma variável com valor de outro tipo. 
+O JavaScript também é definido pela **tipagem dinâmica**, ou seja, você não precisa declarar o tipo de dado que será armazenado na variável, trazendo uma maior flexibilidade na escrita do código, mas podendo trazer problemas como erros por redeclaração da mesma variável com valor de outro tipo. 
 
 Exemplo: 
 ```
-var minhaVariavel = 10; 
- 
+var minhaVariavel = 10;
 minhaVariavel = 'Texto'; 
 
 console.log(minhaVariavel);
-
 // Saída: Texto
 ```
 
-Já em *tipagem estática*, é obrigatório a declaração do tipo de dado que a variável irá receber, antes de atribuir valor a ela. 
+Já em **tipagem estática**, é obrigatório a declaração do tipo de dado que a variável irá receber, antes de atribuir valor a ela. 
 
 # Conceitos
-## Variáveis
-Quando um programa precisa reter um valor para uso futuro, ele atribui o valora (ou 'armazena' o dado em) uma variável. As variáveis tem **nome** e permitem o uso desses nomes em nossos programas para se referir a valores. 
+# Variáveis
+Quando um programa precisa reter um valor para uso futuro, ele atribui o valor (ou 'armazena' o dado em) uma variável. As variáveis tem **nome** e permitem o uso desses nomes em nossos programas para se referir a valores. 
 
 Exemplo: 
 ```
@@ -92,18 +92,19 @@ Exemplo:
 
 Ou seja, a variável *meuNumero* é nome que usamos para identificar um espaço na memória, que guarda um dado específico e esse dado é um dado do tipo número e o valor dele é 3. 
 
-## Tipos de Dados
+# Tipos de Dados
 Para que um programa execute de forma correta, ele precisa receber dados corretos. 
 
 Exemplo: números para fazer contas, textos para exibir um nome, guardar um nome num banco de dados, etc. 
 
 Os **tipos** de Javascript podem ser divididos em duas categorias: **tipos primitivos** e **tipos de objetos**. 
-### Tipos Primitivos
+## Tipos Primitivos
 Temos três tipos principais, que são os primitivos: 
 * Tipo *number*; 
 * Tipo *string*;
 * Tipo *boolean*. 
 
+## Tipo Number
 **Obs.**: Divisão por zero no Javascript não aponta como um erro
 ```
 var a = 10
@@ -117,6 +118,44 @@ var b = 0
 console.log(a/b) // NaN
 ```
 
+## Tipo String
+Usamos no JavaScript para guardar qualquer tipo de texto, ou seja, tudo que não for número ou não for booleano.
+
+**Exemplo**: guardar caracteres, como por exemplo, do alfabeto. 
+
+Tudo que colocarmos entre aspas o JavaScript vai considerar como uma string.
+
+Exemplo: 
+```
+    const senha = 'senhaSuperSegura456!';
+```
+
+String de uma cadeia de caracteres:
+```
+    const stringDeNumeros = '345218';
+```
+
+### Codificação de strings
+*Character enconding*: Nas últimas décadas foram desenvolvidos diversos conjuntos de caracteres especiais, cada um com seus próprios códigos, para que pessoas que escrevem e leem em linguagens diferentes do inglês pudessem utilizar computadores com seus próprios idiomas. 
+
+**Diversos conjuntos de caracteres**: 
+* Western; 
+* Latin-US; 
+* Japanese; 
+* ASCII (American Standard Code for Information Interchange), e português, Código Padrão Americano para o Intercâmbio de Informações.
+
+O padrão utilizado pela *web* hoje é o **UTF** (de *Unicode Transformation Format* ou 'formato de conversão de unicode'). O Unicode tem códigos específicos para 'cifrar' e 'decifrar' caracteres de mais de 150 idiomas antigos e mordernos, e também diversos outros conjuntos de caracteres como símbolos matemáticos e inclusive *emojis*. 
+
+Exemplo: 
+```
+const cifrao = '\u0024'
+console.log(cifrao)
+```
+
+O Javascript usa, por padrão, o UTF-16. O número 16 está relacionado ao espaço em bits ocupados por cada caractere, 16 neste caso. 
+
+### Trabalhando com strings
+
 ## Operadores
 Exemplo: realizar a comparação para verificar se dois dados são iguais. A senha 'imputada' é igual a senha que está no banco?
 
@@ -125,20 +164,22 @@ As funções são peças chaves para que nosso programa se comporte da maneira q
 ### Funções de primeira classe e ordem maior
 A função pode ser atribuida a uma variável, pode ser atribuida a uma estrutura de dados (seja um object ou um array) e pode ser passada por outro argumento ou até mesmo ser passada para outras funções. 
 
-Exemplo: 
-```
-// Declarando uma função: 
-function getName(){
+**Exemplo**: 
+
+Declarando uma função:
+``` 
+function getName() {
     return 'Grazielle Amanda do Carmo Café';
 }
 
 console.log(getName());
-// Saída: Grazielle Amanda do Carmo Café
+// saída: Grazielle Amanda do Carmo Café
+```
 
 
-
-// Passando a função para uma constante e chamando uma função dentro de outra
-function logFn(fn){
+Passando a função para uma constante e chamando uma função dentro de outra:
+```
+function logFn(fn) {
     console.log(fn());
 }
 
@@ -147,25 +188,22 @@ logFnResult(getName);
 ```
 
 ### Declaração de funções
-#### Formato padrão
-*Declaração da função no formato padrão*
+Declaração da função no formato padrão:
 ```
-function fn(){
+function fn() {
     return 'Code here';
 }
-
 
 console.log(fn());
 ```
 
-#### Arrow Function
-*Declaração no formato de arrow function*
+Declaração no formato de arrow function:
 ```
 const arrowFunction = () => 'Code here using arrow function';
 console.log(arrowFunction());
 ```
 
-*Declaração no formato de arrow function para mais de uma expressão*
+Declaração no formato de arrow function para mais de uma expressão:
 ```
 const arrowFunctionMoreExpressions = () => {
     return 'Code here for more expressions inside body';
@@ -174,8 +212,7 @@ const arrowFunctionMoreExpressions = () => {
 console.log(arrowFunctionMoreExpressions());
 ```
 
-
-## Condicionais
+## Instruções e declarações
 ### Switch Case
 A condicional switch avalia uma expressão, combinando o valor da expressão para uma cláusula case, 
 e executa as instruções associadas ao case. 
@@ -188,17 +225,16 @@ switch (exp){
 }
 ```
 
-
-## Laços de repetição 
-## #While 
-Estrutura condição while
+### While  
+A declaração **while** cria um laço que executa uma rotina específica enquanto a condição de teste for avaliada como verdadeira. A condição é **avaliada antes da execução da rotina**. 
 ```
 while (condição) {
     rotina
 }
 ```
 
-*Exemplo*
+**Exemplo**
+
 ```
 var n = 0;
 var x = 0;
