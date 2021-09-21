@@ -87,12 +87,39 @@ Já em *tipagem estática*, é obrigatório a declaração do tipo de dado que a
 
 # Conceitos
 ## Variáveis
-Armazenamos os nossos dados em variáveis.
+Quando um programa precisa reter um valor para uso futuro, ele atribui o valora (ou 'armazena' o dado em) uma variável. As variáveis tem **nome** e permitem o uso desses nomes em nossos programas para se referir a valores. 
+
+Exemplo: 
+```
+    const meuNumero = 3;
+```
+
+Ou seja, a variável *meuNumero* é nome que usamos para identificar um espaço na memória, que guarda um dado específico e esse dado é um dado do tipo número e o valor dele é 3. 
 
 ## Tipos de Dados
 Para que um programa execute de forma correta, ele precisa receber dados corretos. 
 
 Exemplo: números para fazer contas, textos para exibir um nome, guardar um nome num banco de dados, etc. 
+
+Os **tipos** de Javascript podem ser divididos em duas categorias: **tipos primitivos** e **tipos de objetos**. 
+### Tipos Primitivos
+Temos três tipos principais, que são os primitivos: 
+* Tipo *number*; 
+* Tipo *string*;
+* Tipo *boolean*. 
+
+**Obs.**: Divisão por zero no Javascript não aponta como um erro
+```
+var a = 10
+var b = 0
+console.log(a/b) // Infinity
+```
+
+```
+var a = 0
+var b = 0
+console.log(a/b) // NaN
+```
 
 ## Operadores
 Exemplo: realizar a comparação para verificar se dois dados são iguais. A senha 'imputada' é igual a senha que está no banco?
@@ -272,3 +299,18 @@ O *npm* é o Gerenciador de Pacotes do Node (Node Package Manager).
 
 O *npm* funciona baseado em dois ofícios: 
 * É um repositório amplamente usado para a publicação de projetos Node.JS de código aberto (open-source). Isso significa que ele é uma plataforma online onde qualquer pessoa pode publicar e compartilhar ferramentas escritas em Javascript.
+
+## Instalação 
+* Abra uma janela no terminal do seu computador. 
+* No terminal, é possível verificar o número da versão instalada em sua máquina
+
+```
+node --version 
+
+```
+
+ou 
+
+```
+node -v
+```
