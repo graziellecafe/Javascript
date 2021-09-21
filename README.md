@@ -346,3 +346,15 @@ ou
 ```
 node -v
 ```
+
+
+# Programação Orientada a Objetos
+## Class
+A declaração **class** cria uma nova classe com dado nome usando a herança do protótipo base. 
+
+Sintaxe 
+```
+class name [extends] {
+    // class body
+}
+```
