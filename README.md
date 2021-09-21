@@ -7,19 +7,15 @@ Estudos de Javascript através da:
 # Algoritmos
 Algoritmos são sequências de passos que seguimos com a intenção de atingir um objetivo. 
 
-Exemplo: atravessar a rua, fazer um bolo, definir com clareza ou definir qual critério usar para aprovar ou reprovar um aluno. 
+**Exemplos**: atravessar a rua, fazer um bolo, definir com clareza ou definir qual critério usar para aprovar ou reprovar um aluno. 
 
-No desenvolvimento de um algoritmo, devemos definir com clareza e forma precisa o conjunto de regras ou instruções que serão utilizadas para resolver aquele problema em específico. 
+No desenvolvimento de um algoritmo, devemos definir com clareza e forma precisa o conjunto de regras ou instruções que serão utilizadas para resolver aquele problema em específico. A **lógica de programação**, é onde aplicamos todos os conceitos de algoritmo, a definição do passo-a-passo e transferimos toda a lógica do algoritmo desenvolvido para uma linguagem de programação. Uma linguagem de programação é um meio estruturado para passar instruções para a máquina. 
 
-A *lógica de programação*, é onde aplicamos todos os conceitos de algoritmo, a definição do passo-a-passo e transferimos toda a lógica do algoritmo desenvolvido para uma linguagem de programação. Uma linguagem de programação é um meio estruturado para passar instruções para a máquina. 
-
-Exemplos de linguagem de programação: C, Java, PHP, Python, Javascript, entre outras. Cada uma delas tem suas características, particularidades e cenários de aplicação. 
+**Exemplos de linguagem de programação**: C, Java, PHP, Python, Javascript, entre outras. Cada uma delas tem suas características, particularidades e cenários de aplicação. 
 # História: ECMAScript
-**ECMAScript 6**
-*ECMAScript 6*, ou *ECMAScript 2015* é somente a padronização da linguagem Javascript. Esta versão lançada no mercado
-em 2015, foi um divisor de águas na evolução desta linguagem de programação, trazendo recursos e funcionalidades como novas maneiras de iterar objetos, declaração de variáveis com let e const e modularização de classes. 
+**ECMAScript 6**, ou **ECMAScript 2015** é somente a padronização da linguagem Javascript. Esta versão lançada no mercado em 2015, foi um divisor de águas na evolução desta linguagem de programação, trazendo recursos e funcionalidades como novas maneiras de iterar objetos, declaração de variáveis com let e const e modularização de classes. 
 
-Criado pelo Brendan Eich, antigo funcionário da Netscape que criou uma linguagem de programação baseada em scripts, de forma a trazer mais vida ao HTML. 
+Criado pelo Brendan Eich, antigo funcionário da Netscape que criou uma **linguagem de programação baseada em scripts**, de forma a trazer mais vida ao HTML. 
 
 O ECMAScript é uma padronização da linguagem. 
 
