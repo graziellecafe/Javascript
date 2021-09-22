@@ -174,6 +174,94 @@ O Javascript usa, por padrão, o UTF-16. O número 16 está relacionado ao espa�
 # Instruções e declarações
 Aplicações em JavaScript são realizadas através de instruções com uma sintaxe apropriada. Uma única instrução pode abranger múltiplas linhas. Múltiplas instruções pode abranger múltiplas linhas.
 
+## Controle de fluxo
+### break 
+Termina o atual loop (switch), troca, ou nomeia instruções e transfere o controle do programa para a próxima instrução após a que foi terminada. 
+
+### continue 
+Termina a execução das instruções na atual iteração do atual loop, e continua a execução do loop com a seguinte interação. 
+### switch
+A condicional switch avalia uma expressão, combinando o valor da expressão para uma cláusula case, e executa as instruções associadas ao case. 
+
+```
+switch (exp){
+    case 'Oranges': 
+        console.log('Oranges are $0.59 a pound.');
+        break; 
+}
+```
+## Iterações
+### for
+```
+const nomes = ['Grazielle','Fagner','Camila','Andressa','Lucão'];
+
+for(let i = 0; i<nomes.length; i++) {
+    console.log('[for]', nomes[i]);
+}
+```
+
+### while  
+A declaração **while** cria um laço que executa uma rotina específica enquanto a condição de teste for avaliada como verdadeira. A condição é **avaliada antes da execução da rotina**. 
+```
+while (condição) {
+    rotina
+}
+```
+
+**Exemplo**
+
+```
+var n = 0;
+var x = 0;
+
+while (n < 3) { 
+    n++; 
+    x += n; 
+
+    console.log('O valor de n é:', n);
+    console.log('O valor de x é:', x);
+}
+```
+
+### do ... while 
+```
+let i = 0; 
+
+do {
+    console.log(i);
+    i += 1; 
+} while (i <= 5);
+```
+
+### forEach e map
+[Aula Alura sobre forEach e map](https://www.alura.com.br/artigos/javascript-quando-devo-usar-foreach-e-map?gclid=Cj0KCQjw4eaJBhDMARIsANhrQABBNkfAJ5iseJHPwP9zt6SmWl92hVRqoCHons5yiyr4cu3-Y8Okn-gaAnhlEALw_wcB)
+
+
+O **forEach** percorre todos os itens de um array, tal como o loop for normal, isso porque internamente ele possui um loop for.
+
+```
+const retornoForEach = nomes.forEach((nomeAtual) => {
+    console.log(nomeAtual);
+
+    return nomeAtual.toUpperCase();
+})
+console.log('Retorno forEach: ', retornoForEach);
+```
+
+Enquanto o forEach foi feito para ser uma alternativa ao loop for, o **map** foi feito para fazemos operação de transformação/alteração nos itens de um array e ao final dessas operações ter uma lista nova com a mesma quantidade de itens da lista base.
+
+```
+const retornoMap = nomes.map((nomeAtual) => {
+    console.log(nomeAtual);
+
+    return nomeAtual.toUpperCase();
+})
+console.log('Retorno map: ', retornoMap);
+```
+
+Caso queiramos somente uma forma mais elegante para trabalhar com o for usamos o .forEach e caso queiramos transformar |alterar valores ou mesmo concatenar operações em cima de arrays o .map é o mais indicado.
+
+
 ## Funções
 As funções são peças chaves para que nosso programa se comporte da maneira que queiramos. E elas também servem para isolar algumas partes do código, além de reaproveitar e organizar melhor nosso código. 
 ### Funções de primeira classe e ordem maior
@@ -228,107 +316,19 @@ console.log(arrowFunctionMoreExpressions());
 ```
 
 
-## Controle de fluxo
-### Switch Case
-A condicional switch avalia uma expressão, combinando o valor da expressão para uma cláusula case, 
-e executa as instruções associadas ao case. 
-
-```
-switch (exp){
-    case 'Oranges': 
-        console.log('Oranges are $0.59 a pound.');
-        break; 
-}
-```
-
-### for
-```
-const nomes = ['Grazielle','Fagner','Camila','Andressa','Lucão'];
-
-for(let i = 0; i<nomes.length; i++) {
-    console.log('[for]', nomes[i]);
-}
-```
-
-### While  
-A declaração **while** cria um laço que executa uma rotina específica enquanto a condição de teste for avaliada como verdadeira. A condição é **avaliada antes da execução da rotina**. 
-```
-while (condição) {
-    rotina
-}
-```
-
-**Exemplo**
-
-```
-var n = 0;
-var x = 0;
-
-while (n < 3) { 
-    n++; 
-    x += n; 
-
-    console.log('O valor de n é:', n);
-    console.log('O valor de x é:', x);
-}
-```
-
-### Do ... While 
-```
-let i = 0; 
-
-do {
-    console.log(i);
-    i += 1; 
-} while (i <= 5);
-```
-
-### forEach e map
-[Aula Alura sobre forEach e map] (https://www.alura.com.br/artigos/javascript-quando-devo-usar-foreach-e-map?gclid=Cj0KCQjw4eaJBhDMARIsANhrQABBNkfAJ5iseJHPwP9zt6SmWl92hVRqoCHons5yiyr4cu3-Y8Okn-gaAnhlEALw_wcB)
-
-
-O **forEach** percorre todos os itens de um array, tal como o loop for normal, isso porque internamente ele possui um loop for.
-
-```
-const retornoForEach = nomes.forEach((nomeAtual) => {
-    console.log(nomeAtual);
-
-    return nomeAtual.toUpperCase();
-})
-console.log('Retorno forEach: ', retornoForEach);
-```
-
-Enquanto o forEach foi feito para ser uma alternativa ao loop for, o **map** foi feito para fazemos operação de transformação/alteração nos itens de um array e ao final dessas operações ter uma lista nova com a mesma quantidade de itens da lista base.
-
-```
-const retornoMap = nomes.map((nomeAtual) => {
-    console.log(nomeAtual);
-
-    return nomeAtual.toUpperCase();
-})
-console.log('Retorno map: ', retornoMap);
-```
-
-Caso queiramos somente uma forma mais elegante para trabalhar com o for usamos o .forEach e caso queiramos transformar |alterar valores ou mesmo concatenar operações em cima de arrays o .map é o mais indicado.
-
-
-
-
-
+# Programação Orientada a Objetos
 ## Tipos de Métodos
 Metodo possui 2 comportamentos padrão:
-    1. Realizar uma operação e retornar o resultado;
-    2. Realizar uma operação sem retornar resultado; 
+.Realizar uma operação e retornar o resultado;
+.Realizar uma operação sem retornar resultado; 
 
 Métodos possuem categorias: 
-    1. Métodos de instância: Só podem ser usados, através de um objeto;
-    2. Métodos estáticos: Existem o escopo da classe, ou seja, não dependem de instâncias para serem usados
+.Métodos de instância: Só podem ser usados, através de um objeto;
+.Métodos estáticos: Existem o escopo da classe, ou seja, não dependem de instâncias para serem usados
     
-Método Get: Obtém alguma informação
-Método Set: Define ou altera alguma informação
-
-# Programação Orientada a Objetos
-## Class
+Método **Get**: Obtém alguma informação
+Método **Set**: Define ou altera alguma informação
+## Classes
 A declaração **class** cria uma nova classe com dado nome usando a herança do protótipo base. 
 
 ### Sintaxe 
@@ -352,31 +352,42 @@ console.log(contaBancaria);
 ### Instanciar uma classe
 O termo **instanciar** uma classe significa que estamos criando um objeto com a estrutura da classe. É o mesmo que dizer 'criar um objeto' daquela classe. Para instanciar uma classe utilizamos a palavra reservada **new** seguido pelo nome da classe e invocando o construtor padrão '()' da classe. 
 
-
-
 ## Exercícios sobre Programação Orientada a Objetos
 ### Exercício 01
-. Criar um método na classe Pessoa chamado trabalhar que deve adicionar um valor aleatório entre 1 e 50 na propriedade dinheiro da pessoa (sempre que chamar o método trabalhar, ela irá ganhar um valor de 1 a 50). A última instrução do método deve exibir uma mensagem  da quantia do valor recebido após o trabalho. A pessoa só pode trabalhar se a idade for igual ou maior que 18 anos. Se a pessoa tiver menos de 18 anos deve se exibir uma mensagem que ela (ainda) não pode  trabalhar. 
-. Criar um método na classe Pessoa chamado ir ao mercado e deve subtrair um valor aleatório entre 1 e 100 do dinheiro da pessoa. A pessoa não deve realizar a compra se o valor da compra a deixe com menos que 0 de saldo. A última instrução do método de ir ao mercado deve informar que a pessoa fez uma compra no valor x e ficou com y de dinheiro restante, onde x é o valor descontado e y o valor de dinheiro dela. 
-. Chamar o método envelhecer e adicionar 4 anos. 
-. Chamar o método trabalhar 
-. Chamar o método envelhecer
-. Chamar o método trabalhar 
-. Se agora a pessoa já for maior de idade, chamar o método ir ao mercado. 
+.Criar um método na classe Pessoa chamado trabalhar que deve adicionar um valor aleatório entre 1 e 50 na propriedade dinheiro da pessoa (sempre que chamar o método trabalhar, ela irá ganhar um valor de 1 a 50). A última instrução do método deve exibir uma mensagem  da quantia do valor recebido após o trabalho. A pessoa só pode trabalhar se a idade for igual ou maior que 18 anos. Se a pessoa tiver menos de 18 anos deve se exibir uma mensagem que ela (ainda) não pode  trabalhar. 
+
+.Criar um método na classe Pessoa chamado ir ao mercado e deve subtrair um valor aleatório entre 1 e 100 do dinheiro da pessoa. A pessoa não deve realizar a compra se o valor da compra a deixe com menos que 0 de saldo. A última instrução do método de ir ao mercado deve informar que a pessoa fez uma compra no valor x e ficou com y de dinheiro restante, onde x é o valor descontado e y o valor de dinheiro dela. 
+
+.Chamar o método envelhecer e adicionar 4 anos. 
+
+.Chamar o método trabalhar 
+
+.Chamar o método envelhecer
+
+.Chamar o método trabalhar 
+
+.Se agora a pessoa já for maior de idade, chamar o método ir ao mercado. 
 
 ### Exercício 02
-. Quando a pessoa tiver 18 anos ou mais ela precisa ter uma rotina mensal de trabalho e compras. Considerando que o mês tem 30 dias, a pessoa deve trabalhar todos os dias. 
-. Ela deve ter dinheiro o suficiente para fazer compras pelo menos uma vez a cada 5 dias, incluindo finais de semana. 
-. Se passarem 5 dias e a pessoa não tiver saldo para realizar a compra, ela deve receber $200 reais emprestado da mãe e fazer a compra. Sempre que ela pegar o dinheiro emprestado, ela deve devolver assim que tiver o saldo suficiente. 
-. Após passar os 30 dias, se a pessoa tiver mais de $300 de saldo, ela deve doar $50 para a caridade. 
-. Esta rotina deve se repetir por 12 meses. 
-. O valor da compra de mercado deve ser agora, no mínimo, de $50 para que ela compre o necessário para 5 dias. 
-. Sempre que a grazi pegar dinheiro emprestado, ela deve armazenar quantas vezes ela pegou dinheiro emprestado e sempre que ela pagar a mãe dela o dinheiro emprestado, ela deve remover 1 deste contador de dinheiro emprestado. 
+.Quando a pessoa tiver 18 anos ou mais ela precisa ter uma rotina mensal de trabalho e compras. Considerando que o mês tem 30 dias, a pessoa deve trabalhar todos os dias. 
+
+.Ela deve ter dinheiro o suficiente para fazer compras pelo menos uma vez a cada 5 dias, incluindo finais de semana. 
+
+.Se passarem 5 dias e a pessoa não tiver saldo para realizar a compra, ela deve receber $200 reais emprestado da mãe e fazer a compra. Sempre que ela pegar o dinheiro emprestado, ela deve devolver assim que tiver o saldo suficiente. 
+.Após passar os 30 dias, se a pessoa tiver mais de $300 de saldo, ela deve doar $50 para a caridade. 
+
+.Esta rotina deve se repetir por 12 meses. 
+
+.O valor da compra de mercado deve ser agora, no mínimo, de $50 para que ela compre o necessário para 5 dias. 
+
+.Sempre que a grazi pegar dinheiro emprestado, ela deve armazenar quantas vezes ela pegou dinheiro emprestado e sempre que ela pagar a mãe dela o dinheiro emprestado, ela deve remover 1 deste contador de dinheiro emprestado. 
 
  ### Exercício 03
-. Implementar o método Trabalhar() dentro da classe MundoCapitalista seguindo as mesmas diretrizes da AcaoSocial;  
-. Remover a implementação do método Trabalhar() da classe Pessoa; 
-. Alterar o código em todos os pontos que chama o método Trabalhar(), para chamar via classe MundoCapitalista em vez da classe Pessoa; 
+.Implementar o método Trabalhar() dentro da classe MundoCapitalista seguindo as mesmas diretrizes da AcaoSocial;  
+
+.Remover a implementação do método Trabalhar() da classe Pessoa; 
+
+.Alterar o código em todos os pontos que chama o método Trabalhar(), para chamar via classe MundoCapitalista em vez da classe Pessoa; 
 
 
 
