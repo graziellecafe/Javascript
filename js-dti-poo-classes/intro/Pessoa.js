@@ -4,7 +4,7 @@ class PessoaJavascript {
     Idade = 0;
 }
 
-//objeto dinamico
+// Objeto Dinâmico
 const pessoaDesestruturada = {
     nome: '',
     idade: 0
