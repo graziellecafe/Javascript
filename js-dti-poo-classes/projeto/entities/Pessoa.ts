@@ -67,13 +67,6 @@ export class Pessoa {
         this.Idade = this.Idade + anosDeVida;
     }
 
-    public Trabalhar(): number{
-        const minSalario = 1; 
-        const maxSalario = 100;     
-
-        return Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario); 
-    }
-
     public CalculaValorDaCompra(): number { 
         const maxGastos = 50; 
         const minGastos = 100;  

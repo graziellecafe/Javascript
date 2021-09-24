@@ -466,3 +466,15 @@ ou
 ```
 node -v
 ```
+
+## Event Loop
+Callback function:
+
+Event Loop: 
+
+Node: apenas um unico event loop
+
+Sistema operacional: multi treat(?)
+
+Operações assíncronas
+Nem sempre o retorno vai vir na ordem certa

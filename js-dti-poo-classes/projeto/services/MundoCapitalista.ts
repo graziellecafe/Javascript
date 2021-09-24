@@ -32,7 +32,6 @@ export class MundoCapitalista {
             
         const trabalhador = new Trabalhador(nomeTrabalhador, ganhoDoDia, dia, mes, ano);
         this.ListaDeTrabalhadores.push(trabalhador)
-        // logica para adicionar os dados na lista trabalhador 
 
         return ganhoDoDia;
     }

@@ -23,7 +23,6 @@ var MundoCapitalista = /** @class */ (function () {
         var ganhoDoDia = Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario);
         var trabalhador = new Trabalhador(nomeTrabalhador, ganhoDoDia, dia, mes, ano);
         this.ListaDeTrabalhadores.push(trabalhador);
-        // logica para adicionar os dados na lista trabalhador 
         return ganhoDoDia;
     };
     return MundoCapitalista;
