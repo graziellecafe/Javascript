@@ -329,7 +329,7 @@ Métodos possuem categorias:
 Método **Get**: Obtém alguma informação
 Método **Set**: Define ou altera alguma informação
 ## Classes
-A declaração **class** cria uma nova classe com dado nome usando a herança do protótipo base. 
+A declaração **class** cria uma nova classe com dado nome usando a herança do protótipo base. De forma resumida, a classe possui propriedades e métodos. Uma classe foi feita para realizar uma tarefa específica ou um conjunto de tarefas associados. 
 
 ### Sintaxe 
 ```
@@ -352,42 +352,60 @@ console.log(contaBancaria);
 ### Instanciar uma classe
 O termo **instanciar** uma classe significa que estamos criando um objeto com a estrutura da classe. É o mesmo que dizer 'criar um objeto' daquela classe. Para instanciar uma classe utilizamos a palavra reservada **new** seguido pelo nome da classe e invocando o construtor padrão '()' da classe. 
 
+## Exemplo de implementação 
+```
+export class <nome_da_classe> {
+    // propriedades
+
+    // construtor 
+
+    // métodos
+}
+
+// instanciar a classe 
+const <nome_da_variavel> = new <nome_da_classe>
+```
+
+## services
+Relacionado às classes que realizam um certo serviço e é chamada quando precisar. 
+
 ## Exercícios sobre Programação Orientada a Objetos
 ### Exercício 01
-.Criar um método na classe Pessoa chamado trabalhar que deve adicionar um valor aleatório entre 1 e 50 na propriedade dinheiro da pessoa (sempre que chamar o método trabalhar, ela irá ganhar um valor de 1 a 50). A última instrução do método deve exibir uma mensagem  da quantia do valor recebido após o trabalho. A pessoa só pode trabalhar se a idade for igual ou maior que 18 anos. Se a pessoa tiver menos de 18 anos deve se exibir uma mensagem que ela (ainda) não pode  trabalhar. 
+1. Criar um método na classe Pessoa chamado trabalhar que deve adicionar um valor aleatório entre 1 e 50 na propriedade dinheiro da pessoa (sempre que chamar o método trabalhar, ela irá ganhar um valor de 1 a 50). A última instrução do método deve exibir uma mensagem  da quantia do valor recebido após o trabalho. A pessoa só pode trabalhar se a idade for igual ou maior que 18 anos. Se a pessoa tiver menos de 18 anos deve se exibir uma mensagem que ela (ainda) não pode  trabalhar. 
 
-.Criar um método na classe Pessoa chamado ir ao mercado e deve subtrair um valor aleatório entre 1 e 100 do dinheiro da pessoa. A pessoa não deve realizar a compra se o valor da compra a deixe com menos que 0 de saldo. A última instrução do método de ir ao mercado deve informar que a pessoa fez uma compra no valor x e ficou com y de dinheiro restante, onde x é o valor descontado e y o valor de dinheiro dela. 
+2. Criar um método na classe Pessoa chamado ir ao mercado e deve subtrair um valor aleatório entre 1 e 100 do dinheiro da pessoa. A pessoa não deve realizar a compra se o valor da compra a deixe com menos que 0 de saldo. A última instrução do método de ir ao mercado deve informar que a pessoa fez uma compra no valor x e ficou com y de dinheiro restante, onde x é o valor descontado e y o valor de dinheiro dela. 
 
-.Chamar o método envelhecer e adicionar 4 anos. 
+3. Chamar o método envelhecer e adicionar 4 anos. 
 
-.Chamar o método trabalhar 
+4. Chamar o método trabalhar 
 
-.Chamar o método envelhecer
+5. Chamar o método envelhecer
 
-.Chamar o método trabalhar 
+6. Chamar o método trabalhar 
 
-.Se agora a pessoa já for maior de idade, chamar o método ir ao mercado. 
+7. Se agora a pessoa já for maior de idade, chamar o método ir ao mercado. 
 
 ### Exercício 02
-.Quando a pessoa tiver 18 anos ou mais ela precisa ter uma rotina mensal de trabalho e compras. Considerando que o mês tem 30 dias, a pessoa deve trabalhar todos os dias. 
+1. Quando a pessoa tiver 18 anos ou mais ela precisa ter uma rotina mensal de trabalho e compras. Considerando que o mês tem 30 dias, a pessoa deve trabalhar todos os dias. 
 
-.Ela deve ter dinheiro o suficiente para fazer compras pelo menos uma vez a cada 5 dias, incluindo finais de semana. 
+2. Ela deve ter dinheiro o suficiente para fazer compras pelo menos uma vez a cada 5 dias, incluindo finais de semana. 
 
-.Se passarem 5 dias e a pessoa não tiver saldo para realizar a compra, ela deve receber $200 reais emprestado da mãe e fazer a compra. Sempre que ela pegar o dinheiro emprestado, ela deve devolver assim que tiver o saldo suficiente. 
-.Após passar os 30 dias, se a pessoa tiver mais de $300 de saldo, ela deve doar $50 para a caridade. 
+3. Se passarem 5 dias e a pessoa não tiver saldo para realizar a compra, ela deve receber $200 reais emprestado da mãe e fazer a compra. Sempre que ela pegar o dinheiro emprestado, ela deve devolver assim que tiver o saldo suficiente. 
 
-.Esta rotina deve se repetir por 12 meses. 
+4. Após passar os 30 dias, se a pessoa tiver mais de $300 de saldo, ela deve doar $50 para a caridade. 
 
-.O valor da compra de mercado deve ser agora, no mínimo, de $50 para que ela compre o necessário para 5 dias. 
+5. Esta rotina deve se repetir por 12 meses. 
 
-.Sempre que a grazi pegar dinheiro emprestado, ela deve armazenar quantas vezes ela pegou dinheiro emprestado e sempre que ela pagar a mãe dela o dinheiro emprestado, ela deve remover 1 deste contador de dinheiro emprestado. 
+6. O valor da compra de mercado deve ser agora, no mínimo, de $50 para que ela compre o necessário para 5 dias. 
+
+7. Sempre que a grazi pegar dinheiro emprestado, ela deve armazenar quantas vezes ela pegou dinheiro emprestado e sempre que ela pagar a mãe dela o dinheiro emprestado, ela deve remover 1 deste contador de dinheiro emprestado. 
 
  ### Exercício 03
-.Implementar o método Trabalhar() dentro da classe MundoCapitalista seguindo as mesmas diretrizes da AcaoSocial;  
+1. Implementar o método Trabalhar() dentro da classe MundoCapitalista seguindo as mesmas diretrizes da AcaoSocial;  
 
-.Remover a implementação do método Trabalhar() da classe Pessoa; 
+2. Remover a implementação do método Trabalhar() da classe Pessoa; 
 
-.Alterar o código em todos os pontos que chama o método Trabalhar(), para chamar via classe MundoCapitalista em vez da classe Pessoa; 
+3. Alterar o código em todos os pontos que chama o método Trabalhar(), para chamar via classe MundoCapitalista em vez da classe Pessoa; 
 
 
 
