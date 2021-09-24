@@ -1,36 +1,22 @@
-/* 
-Qualquer método relacionado a uma ação social. 
-Ex.: doar uma cesta básica, doar dinheiro, visitar idosos no asilo
-*/
-import { Pessoa } from "../entities/Pessoa"
-
-class Doador {
-    Nome: string; 
+class Doacao {
+    NomeDoador: string; 
     Valor: number;
 
     public constructor(nome: string, valor: number) {
-        this.Nome = nome; 
+        this.NomeDoador = nome; 
         this.Valor = valor;
     }
 }
 
 export class AcaoSocial {
-    private ListaDeDoadores: Array<Doador>;
+    private ListaDeDoacoes: Array<Doacao>;
 
     public constructor() {
-        this.ListaDeDoadores = new Array<Doador>();
+        this.ListaDeDoacoes = new Array<Doacao>();
     }
 
-    public RealizarDoacaoParaCaridade(nomeDoador: string,valorDoado: number): void {
-        const doacaoRecebida = new Doador(nomeDoador, valorDoado);     
-        this.ListaDeDoadores.push(doacaoRecebida);
-
-        
+    public ReceberDoacao(nomeDoador: string,valorDoado: number): void {
+        const doacaoRecebida = new Doacao(nomeDoador, valorDoado);     
+        this.ListaDeDoacoes.push(doacaoRecebida);       
     }
 }
-
-// Javascript
-// const lista = [{
-//     nome: '', 
-//     valor: 0,
-// }]

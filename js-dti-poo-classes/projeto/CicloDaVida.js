@@ -2,9 +2,11 @@
 exports.__esModule = true;
 var Pessoa_1 = require("./entities/Pessoa");
 var AcaoSocial_1 = require("./services/AcaoSocial");
+var MundoCapitalista_1 = require("./services/MundoCapitalista");
 var CicloDaVida = /** @class */ (function () {
-    function CicloDaVida(acaoSocial) {
+    function CicloDaVida(acaoSocial, mundoCapitalista) {
         this.AcaoSocial = acaoSocial;
+        this.MundoCapitalista = mundoCapitalista;
     }
     CicloDaVida.prototype.Genesis = function () {
         var grazielle = Pessoa_1.Pessoa.Nascimento('Grazielle', 0);
@@ -29,11 +31,10 @@ var CicloDaVida = /** @class */ (function () {
         var dinheiroTotalEmprestadoPelaMae = 0;
         var countQuantidadeEmprestimos = 0;
         var valorDoEmprestimo = 200;
-        var saldoMinimoParaDoar = 300;
-        var valorParaDoacao = 50;
         for (var meses = 1; meses <= 1; meses++) {
-            for (var dias = 1; dias <= 30; dias++) {
-                var salario = pessoa.Trabalhar();
+            for (var dias = 1; dias < 31; dias++) {
+                //this.RealizarTrabalho(pessoa);
+                var salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), dias, meses, pessoa.ObterIdade());
                 pessoa.DefinirSaldoCarteira(salario);
                 console.log("[Idade: " + pessoa.ObterIdade() + " anos] [M\u00EAs: " + meses + "] [Dia: " + dias + "] [Sal\u00E1rio recebido: R$" + salario + "].");
                 // Verifica a possibilidade de pagamento do empréstimo
@@ -49,19 +50,6 @@ var CicloDaVida = /** @class */ (function () {
                     else {
                         console.log("Ainda h\u00E1 " + countQuantidadeEmprestimos + " a serem pagos, ou seja, R" + dinheiroTotalEmprestadoPelaMae + ".");
                     }
-                    console.log('');
-                }
-                //CHAMAR O MÉTODO CARIDADE
-                if (dias % 30 === 0) {
-                    console.log('');
-                    console.log(' -------------------------------------------CARIDADE------------------------------------------- ');
-                    if (pessoa.ObterSaldoCarteira() >= saldoMinimoParaDoar) {
-                        var saldoAntesDaCaridade = pessoa.ObterSaldoCarteira();
-                        this.AcaoSocial.RealizarDoacaoParaCaridade(pessoa.ObterNome(), valorParaDoacao);
-                        // pessoa.Caridade(valorParaDoacao);
-                        console.log("Voc\u00EA doou R$" + valorParaDoacao + " \u00E0 caridade. Seu saldo antes da caridade era de R$" + saldoAntesDaCaridade + " e agora voc\u00EA possui R$" + pessoa.ObterSaldoCarteira() + ".");
-                    }
-                    console.log(' ---------------------------------------------------------------------------------------------- ');
                     console.log('');
                 }
                 // REALIZAÇÃO DE COMPRAS
@@ -98,7 +86,7 @@ var CicloDaVida = /** @class */ (function () {
                     console.log(' ---------------------------------------------------------------------------------------------- ');
                     console.log('');
                 }
-                // } 
+                this.ValidarDiaDeDoacao(dias, pessoa);
             }
         }
     };
@@ -108,6 +96,25 @@ var CicloDaVida = /** @class */ (function () {
         }
         return false;
     };
+    CicloDaVida.prototype.ValidarDiaDeDoacao = function (diaDoMes, pessoa) {
+        var saldoMinimoParaDoar = 300;
+        var valorParaDoacao = 50;
+        if (diaDoMes === 30) {
+            console.log('');
+            console.log(' -------------------------------------------CARIDADE------------------------------------------- ');
+            if (pessoa.ObterSaldoCarteira() >= saldoMinimoParaDoar) {
+                var saldoAnterior = pessoa.ObterSaldoCarteira();
+                this.AcaoSocial.ReceberDoacao(pessoa.ObterNome(), valorParaDoacao);
+                console.log("Nome do Doador: " + pessoa.ObterNome());
+                console.log("Valor da doa\u00E7\u00E3o: R$" + valorParaDoacao);
+                console.log("Valor saldo anterior: R$" + saldoAnterior);
+                pessoa.DefinirSaldoCarteira(-valorParaDoacao);
+                console.log("Saldo ap\u00F3s doa\u00E7\u00E3o: R$" + pessoa.ObterSaldoCarteira());
+            }
+            console.log(' ---------------------------------------------------------------------------------------------- ');
+            console.log('');
+        }
+    };
     return CicloDaVida;
 }());
-new CicloDaVida(new AcaoSocial_1.AcaoSocial()).Genesis();
+new CicloDaVida(new AcaoSocial_1.AcaoSocial(), new MundoCapitalista_1.MundoCapitalista()).Genesis();
