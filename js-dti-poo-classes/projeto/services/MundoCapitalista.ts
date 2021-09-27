@@ -15,35 +15,36 @@ class Trabalhador {
 }
 
 export class MundoCapitalista {
-    // Implementar o método Trabalhar() na classe MundoCapitalista
-    // propriedades
     private ListaDeTrabalhadores: Array<Trabalhador>;
 
-    // construtor 
     public constructor() {
         this.ListaDeTrabalhadores = new Array<Trabalhador>()
     }
 
-    // métodos
     public Trabalhar(nomeTrabalhador: string, dia: number, mes: number, ano: number): number {
         const minSalario = 1; 
         const maxSalario = 100;     
         const ganhoDoDia =  Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario); 
             
         const trabalhador = new Trabalhador(nomeTrabalhador, ganhoDoDia, dia, mes, ano);
-        this.ListaDeTrabalhadores.push(trabalhador)
+        this.ListaDeTrabalhadores.push(trabalhador);
 
         return ganhoDoDia;
     }
+    
+    public CalculaValorDaCompra(): number { 
+        const maxGastos = 50; 
+        const minGastos = 100;  
+
+        return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);        
+    }
 }
 
-// instanciar a classe 
-// const <nome_da_variavel> = new <nome_da_classe>
 
-
-// passar como informacaoo 
-
-
+// Transformar o projeto em projeto node, posso transformar direto 
+// npm init ou npm package json
+// utilizar o npm install ... typescript
+// OLHAR KT! 
 
 
 

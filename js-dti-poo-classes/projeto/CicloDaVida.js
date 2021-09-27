@@ -5,6 +5,9 @@ var AcaoSocial_1 = require("./services/AcaoSocial");
 var MundoCapitalista_1 = require("./services/MundoCapitalista");
 var CicloDaVida = /** @class */ (function () {
     function CicloDaVida(acaoSocial, mundoCapitalista) {
+        this.dinheiroTotalEmprestadoPelaMae = 0;
+        this.countQuantidadeEmprestimos = 0;
+        this.valorDoEmprestimo = 30;
         this.AcaoSocial = acaoSocial;
         this.MundoCapitalista = mundoCapitalista;
     }
@@ -30,7 +33,7 @@ var CicloDaVida = /** @class */ (function () {
         console.log('                   INÍCIO DO CICLO DA VIDA                   ');
         for (var meses = 1; meses <= 1; meses++) {
             for (var dias = 1; dias < 31; dias++) {
-                this.ValidarDiaDeTrabalho(pessoa, dias, meses);
+                this.Trabalhar(pessoa, dias, meses);
                 this.ValidarIdaAoMercado(pessoa, dias);
                 this.ValidarDiaDeDoacao(pessoa, dias);
             }
@@ -42,16 +45,16 @@ var CicloDaVida = /** @class */ (function () {
         }
         return false;
     };
-    CicloDaVida.prototype.ValidarDiaDeTrabalho = function (pessoa, diaDoMes, mes) {
+    CicloDaVida.prototype.Trabalhar = function (pessoa, diaDoMes, mes) {
         var salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), diaDoMes, mes, pessoa.ObterIdade());
         pessoa.DefinirSaldoCarteira(salario);
         console.log("[TRABALHO] Idade: " + pessoa.ObterIdade() + " anos | M\u00EAs: " + mes + " | Dia: " + diaDoMes + " | Sal\u00E1rio recebido: R$" + salario);
     };
     CicloDaVida.prototype.ValidarIdaAoMercado = function (pessoa, diaDoMes) {
         if (diaDoMes % 5 === 0) {
+            console.log('Chegou no mercado!');
             var valorDaCompra = pessoa.CalculaValorDaCompra();
             var salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
-            console.log("[SAL\u00C1RIO ACUMULADO] R$" + salarioAntesDaCompra);
             console.log('\n');
             if (salarioAntesDaCompra >= valorDaCompra) {
                 pessoa.DefinirSaldoCarteira(-valorDaCompra);
@@ -59,9 +62,13 @@ var CicloDaVida = /** @class */ (function () {
                 console.log('\n');
             }
             else {
-                console.log("[MERCADO: SALDO INSUFICIENTE] O valor da compra de R" + valorDaCompra + " excede seu saldo. ");
+                console.log("[MERCADO: SALDO INSUFICIENTE] O valor da compra de R" + valorDaCompra + " excede seu saldo de " + salarioAntesDaCompra + ".");
                 console.log('\n');
-                // this.ValidarPedidoEmprestimo(pessoa);
+                this.dinheiroTotalEmprestadoPelaMae += this.valorDoEmprestimo;
+                console.log('Pegou o dinheiro emprestado da mãe.');
+                this.countQuantidadeEmprestimos += 1;
+                pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
+                this.ValidarIdaAoMercado(pessoa, diaDoMes);
             }
         }
     };

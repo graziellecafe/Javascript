@@ -12,14 +12,12 @@ var Trabalhador = /** @class */ (function () {
     return Trabalhador;
 }());
 var MundoCapitalista = /** @class */ (function () {
-    // construtor 
     function MundoCapitalista() {
         this.ListaDeTrabalhadores = new Array();
     }
-    // métodos
     MundoCapitalista.prototype.Trabalhar = function (nomeTrabalhador, dia, mes, ano) {
         var minSalario = 1;
-        var maxSalario = 100;
+        var maxSalario = 10;
         var ganhoDoDia = Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario);
         var trabalhador = new Trabalhador(nomeTrabalhador, ganhoDoDia, dia, mes, ano);
         this.ListaDeTrabalhadores.push(trabalhador);
@@ -28,9 +26,6 @@ var MundoCapitalista = /** @class */ (function () {
     return MundoCapitalista;
 }());
 exports.MundoCapitalista = MundoCapitalista;
-// instanciar a classe 
-// const <nome_da_variavel> = new <nome_da_classe>
-// passar como informacaoo 
 // class Trabalhador {
 //     Nome: string; 
 //     Valor: number; 

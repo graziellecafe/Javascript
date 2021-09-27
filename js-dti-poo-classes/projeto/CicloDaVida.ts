@@ -3,6 +3,10 @@ import { AcaoSocial } from "./services/AcaoSocial"
 import { MundoCapitalista } from "./services/MundoCapitalista"
 
 class CicloDaVida { 
+    private dinheiroTotalEmprestadoPelaMae = 0; 
+    private countQuantidadeEmprestimos = 0; 
+    private valorDoEmprestimo = 200;  
+
     private readonly AcaoSocial: AcaoSocial;
     private readonly MundoCapitalista: MundoCapitalista; 
 
@@ -37,7 +41,7 @@ class CicloDaVida {
         console.log('                   INÍCIO DO CICLO DA VIDA                   ');
         for (let meses = 1; meses <= 1; meses++){
             for (let dias = 1; dias < 31; dias++){          
-                this.ValidarDiaDeTrabalho(pessoa, dias, meses);
+                this.Trabalhar(pessoa, dias, meses);
                 this.ValidarIdaAoMercado(pessoa, dias);             
                 this.ValidarDiaDeDoacao(pessoa, dias);
             } 
@@ -52,7 +56,7 @@ class CicloDaVida {
         return false; 
     }
 
-    private ValidarDiaDeTrabalho(pessoa: Pessoa, diaDoMes: number, mes: number): void {
+    private Trabalhar(pessoa: Pessoa, diaDoMes: number, mes: number): void {
         let salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), diaDoMes, mes, pessoa.ObterIdade());
         pessoa.DefinirSaldoCarteira(salario);
         console.log(`[TRABALHO] Idade: ${pessoa.ObterIdade()} anos | Mês: ${mes} | Dia: ${diaDoMes} | Salário recebido: R$${salario}`);
@@ -60,10 +64,9 @@ class CicloDaVida {
     
     private ValidarIdaAoMercado(pessoa: Pessoa, diaDoMes: number): void {
         if(diaDoMes%5 === 0){
-
-            const valorDaCompra = pessoa.CalculaValorDaCompra(); 
+            console.log('Chegou no mercado!');
+            const valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra(); 
             let salarioAntesDaCompra = pessoa.ObterSaldoCarteira(); 
-            console.log(`[SALÁRIO ACUMULADO] R$${salarioAntesDaCompra}`);
             console.log('\n');
 
             if(salarioAntesDaCompra >= valorDaCompra) {
@@ -72,9 +75,13 @@ class CicloDaVida {
                 console.log('\n');
             }
             else {                  
-                console.log(`[MERCADO: SALDO INSUFICIENTE] O valor da compra de R${valorDaCompra} excede seu saldo. `);
+                console.log(`[MERCADO: SALDO INSUFICIENTE] O valor da compra de R${valorDaCompra} excede seu saldo de ${salarioAntesDaCompra}.`);
                 console.log('\n');
-                // this.ValidarPedidoEmprestimo(pessoa);
+                this.dinheiroTotalEmprestadoPelaMae += this.valorDoEmprestimo;
+                console.log('Pegou o dinheiro emprestado da mãe.');
+                this.countQuantidadeEmprestimos += 1; 
+                pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
+                this.ValidarIdaAoMercado(pessoa, diaDoMes);
             }
         }  
     }
@@ -94,29 +101,6 @@ class CicloDaVida {
         }
     }
     
-    // private ValidarPedidoEmprestimo(pessoa: Pessoa): void {
-    //     let valorDaCompra = pessoa.CalculaValorDaCompra();
-    //     let dinheiroTotalEmprestadoPelaMae = 0; 
-    //     let countQuantidadeEmprestimos = 0; 
-    //     const valorDoEmprestimo = 200;         
-        
-    //     console.log(`[EMPRÉSTIMO REALIZADO] Empréstimo no valor de R$${valorDoEmprestimo} realizado. Total de ${countQuantidadeEmprestimos} empréstimo(s) acumulados.`);
-    //     console.log(`[SALÁRIO ACUMULADO] [R$${pessoa.ObterSaldoCarteira()}]`);             
-    //     if(pessoa.ObterSaldoCarteira() >= valorDaCompra){
-    //         dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-    //         countQuantidadeEmprestimos += 1; 
-    //         pessoa.DefinirSaldoCarteira(-valorDaCompra); 
-    //     }
-    //     else{
-    //         pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
-    //         dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-    //         countQuantidadeEmprestimos += 1; 
-
-    //         console.log(`[MERCADO: SALDO INSUFICIENTE] Não foi possível efetuar a compra. `);
-    //         console.log(`Há um total de ${countQuantidadeEmprestimos} empréstimos adquiridos, ou seja, R$${dinheiroTotalEmprestadoPelaMae} em dívida.`); 
-    //     }
-    // }
-
     // private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
     //     this.ValidarPedidoEmprestimo(pessoa);
     //     // Dúvida

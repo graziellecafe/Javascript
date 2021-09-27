@@ -67,13 +67,6 @@ export class Pessoa {
         this.Idade = this.Idade + anosDeVida;
     }
 
-    public CalculaValorDaCompra(): number { 
-        const maxGastos = 50; 
-        const minGastos = 100;  
-
-        return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);        
-    }  
-
     public Emprestimo(): void {
         const valorEmprestimo = 200;
         this.Carteira = this.Carteira + valorEmprestimo;  
