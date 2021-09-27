@@ -40,8 +40,6 @@ class CicloDaVida {
                 this.ValidarDiaDeTrabalho(pessoa, dias, meses);
                 this.ValidarIdaAoMercado(pessoa, dias);             
                 this.ValidarDiaDeDoacao(pessoa, dias);
-                this.ValidarPedidoEmprestimo
-                this.ValidarPagamentoEmprestimo(pessoa);
             } 
         }        
     }
@@ -62,6 +60,7 @@ class CicloDaVida {
     
     private ValidarIdaAoMercado(pessoa: Pessoa, diaDoMes: number): void {
         if(diaDoMes%5 === 0){
+
             const valorDaCompra = pessoa.CalculaValorDaCompra(); 
             let salarioAntesDaCompra = pessoa.ObterSaldoCarteira(); 
             console.log(`[SALÁRIO ACUMULADO] R$${salarioAntesDaCompra}`);
@@ -69,13 +68,13 @@ class CicloDaVida {
 
             if(salarioAntesDaCompra >= valorDaCompra) {
                 pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                console.log(`[MERCADO] Valor da compra: R$${valorDaCompra} | Saldo pós compra: R$${salarioAntesDaCompra} - R$${valorDaCompra} = R$ ${pessoa.ObterSaldoCarteira()}`);
+                console.log(`[MERCADO: COMPRA REALIZADA] Valor da compra: R$${valorDaCompra} | Saldo pós compra: R$${salarioAntesDaCompra} - R$${valorDaCompra} = R$ ${pessoa.ObterSaldoCarteira()}`);
                 console.log('\n');
             }
             else {                  
-                console.log(`[MERCADO] Saldo insuficiente para compra.`);
+                console.log(`[MERCADO: SALDO INSUFICIENTE] O valor da compra de R${valorDaCompra} excede seu saldo. `);
                 console.log('\n');
-                // this.ValidarPedidoEmprestimo(pessoa, valorDaCompra);
+                // this.ValidarPedidoEmprestimo(pessoa);
             }
         }  
     }
@@ -95,55 +94,49 @@ class CicloDaVida {
         }
     }
     
-    private ValidarPedidoEmprestimo(pessoa: Pessoa, valorDaCompra: number): void {
-        let dinheiroTotalEmprestadoPelaMae = 0; 
-        let countQuantidadeEmprestimos = 0; 
-        const valorDoEmprestimo = 200; 
-
-        dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-        countQuantidadeEmprestimos += 1; 
-        let saldoAposEmprestimo = pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
-
-        console.log(`Portanto, um empréstimo de R$${valorDoEmprestimo} é realizado, totalizando um total de ${countQuantidadeEmprestimos} empréstimo(s) feitos.`);
-        console.log(`Saldo atualizado pós empréstimo: [R$${pessoa.ObterSaldoCarteira()}]`); 
+    // private ValidarPedidoEmprestimo(pessoa: Pessoa): void {
+    //     let valorDaCompra = pessoa.CalculaValorDaCompra();
+    //     let dinheiroTotalEmprestadoPelaMae = 0; 
+    //     let countQuantidadeEmprestimos = 0; 
+    //     const valorDoEmprestimo = 200;         
         
-        if(pessoa.ObterSaldoCarteira() >= valorDaCompra){
-            pessoa.DefinirSaldoCarteira(-valorDaCompra); 
-            console.log(`Desta forma, foi possível realizar a compra. O saldo atual é de: [R$${pessoa.ObterSaldoCarteira()}] `);
-        }
-        else{
-            pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
+    //     console.log(`[EMPRÉSTIMO REALIZADO] Empréstimo no valor de R$${valorDoEmprestimo} realizado. Total de ${countQuantidadeEmprestimos} empréstimo(s) acumulados.`);
+    //     console.log(`[SALÁRIO ACUMULADO] [R$${pessoa.ObterSaldoCarteira()}]`);             
+    //     if(pessoa.ObterSaldoCarteira() >= valorDaCompra){
+    //         dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
+    //         countQuantidadeEmprestimos += 1; 
+    //         pessoa.DefinirSaldoCarteira(-valorDaCompra); 
+    //     }
+    //     else{
+    //         pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
+    //         dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
+    //         countQuantidadeEmprestimos += 1; 
 
-            dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-            countQuantidadeEmprestimos += 1; 
+    //         console.log(`[MERCADO: SALDO INSUFICIENTE] Não foi possível efetuar a compra. `);
+    //         console.log(`Há um total de ${countQuantidadeEmprestimos} empréstimos adquiridos, ou seja, R$${dinheiroTotalEmprestadoPelaMae} em dívida.`); 
+    //     }
+    // }
 
-            console.log(`Ainda não foi possível realizar a compra. Outro empréstimo foi efetuado.`);
-            console.log(`Há um total de ${countQuantidadeEmprestimos} empréstimos adquiridos, ou seja, R$${dinheiroTotalEmprestadoPelaMae} em dívida.`); 
+    // private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
+    //     this.ValidarPedidoEmprestimo(pessoa);
+    //     // Dúvida
+    //     let dinheiroTotalEmprestadoPelaMae = this.ValidarPedidoEmprestimo
 
-        }
-    }
-
-    private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
-        let dinheiroTotalEmprestadoPelaMae = 0; 
-        let countQuantidadeEmprestimos = 0; 
-        const valorDoEmprestimo = 200; 
-
-        if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae){
-            console.log('\n');
-            console.log(`[EMPRÉSTIMO] Saldo atual: R$${pessoa.ObterSaldoCarteira()}`);            
-            pessoa.DefinirSaldoCarteira(-dinheiroTotalEmprestadoPelaMae);
-            countQuantidadeEmprestimos -= 1; 
-            console.log(`[EMPRÉSTIMO] Empréstimo de: R$${valorDoEmprestimo} | Saldo pós empréstimo: R$${pessoa.ObterSaldoCarteira()}`);
+    //     if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae){
+    //         console.log('\n');
+    //         console.log(`[EMPRÉSTIMO] Saldo atual: R$${pessoa.ObterSaldoCarteira()}`);            
+    //         pessoa.DefinirSaldoCarteira(-dinheiroTotalEmprestadoPelaMae);
+    //         countQuantidadeEmprestimos -= 1; 
+    //         console.log(`[EMPRÉSTIMO] Empréstimo de: R$${valorDoEmprestimo} | Saldo pós empréstimo: R$${pessoa.ObterSaldoCarteira()}`);
             
-            if(countQuantidadeEmprestimos === 0){
-                console.log('[EMPRÉSTIMO] Não há mais empréstimos a serem pagos.');
-            }
-            else{
-                console.log(`[EMPRÉSTIMO] Quantidade de empréstimos: ${countQuantidadeEmprestimos} | Valor R${dinheiroTotalEmprestadoPelaMae}.`);
-            }
-        }
-    }
-
+    //         if(countQuantidadeEmprestimos === 0){
+    //             console.log('[EMPRÉSTIMO] Não há mais empréstimos a serem pagos.');
+    //         }
+    //         else{
+    //             console.log(`[EMPRÉSTIMO] Quantidade de empréstimos: ${countQuantidadeEmprestimos} | Valor R${dinheiroTotalEmprestadoPelaMae}.`);
+    //         }
+    //     }
+    // }
 }
 
 new CicloDaVida(new AcaoSocial(), new MundoCapitalista()).Genesis(); 
