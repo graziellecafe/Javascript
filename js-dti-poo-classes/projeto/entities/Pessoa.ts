@@ -78,8 +78,4 @@ export class Pessoa {
         const valorEmprestimo = 200;
         this.Carteira = this.Carteira + valorEmprestimo;  
     }
-
-    public Caridade(dinheiro): number {
-        return this.Carteira = this.Carteira - dinheiro;  
-    }
 }

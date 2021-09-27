@@ -50,11 +50,6 @@ var Pessoa = /** @class */ (function () {
     Pessoa.prototype.Envelhecer = function (anosDeVida) {
         this.Idade = this.Idade + anosDeVida;
     };
-    // public Trabalhar(): number{
-    //     const minSalario = 1; 
-    //     const maxSalario = 100;     
-    //     return Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario); 
-    // }
     Pessoa.prototype.CalculaValorDaCompra = function () {
         var maxGastos = 50;
         var minGastos = 100;
@@ -63,9 +58,6 @@ var Pessoa = /** @class */ (function () {
     Pessoa.prototype.Emprestimo = function () {
         var valorEmprestimo = 200;
         this.Carteira = this.Carteira + valorEmprestimo;
-    };
-    Pessoa.prototype.Caridade = function (dinheiro) {
-        return this.Carteira = this.Carteira - dinheiro;
     };
     return Pessoa;
 }());

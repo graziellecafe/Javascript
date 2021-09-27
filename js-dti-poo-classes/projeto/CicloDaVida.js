@@ -14,8 +14,6 @@ var CicloDaVida = /** @class */ (function () {
     };
     CicloDaVida.prototype.CicloDaPessoa = function (pessoa) {
         var vivo = true;
-        console.log('');
-        console.log(' --------------------------------------------INICIO-------------------------------------------- ');
         while (vivo) {
             if (this.ValidarFaseAdulta(pessoa.ObterIdade())) {
                 this.FaseDeVidaAdulta(pessoa);
@@ -28,65 +26,15 @@ var CicloDaVida = /** @class */ (function () {
         }
     };
     CicloDaVida.prototype.FaseDeVidaAdulta = function (pessoa) {
-        var dinheiroTotalEmprestadoPelaMae = 0;
-        var countQuantidadeEmprestimos = 0;
-        var valorDoEmprestimo = 200;
+        console.log('\n');
+        console.log('                   INÍCIO DO CICLO DA VIDA                   ');
         for (var meses = 1; meses <= 1; meses++) {
             for (var dias = 1; dias < 31; dias++) {
-                //this.RealizarTrabalho(pessoa);
-                var salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), dias, meses, pessoa.ObterIdade());
-                pessoa.DefinirSaldoCarteira(salario);
-                console.log("[Idade: " + pessoa.ObterIdade() + " anos] [M\u00EAs: " + meses + "] [Dia: " + dias + "] [Sal\u00E1rio recebido: R$" + salario + "].");
-                // Verifica a possibilidade de pagamento do empréstimo
-                if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae) {
-                    console.log("O saldo atual \u00E9 de R$" + pessoa.ObterSaldoCarteira() + ".");
-                    pessoa.DefinirSaldoCarteira(-dinheiroTotalEmprestadoPelaMae);
-                    console.log('');
-                    console.log("\u00C9 poss\u00EDvel pagar um empr\u00E9stimo de R$" + valorDoEmprestimo + ". O saldo p\u00F3s pagamento \u00E9 de R$" + pessoa.ObterSaldoCarteira());
-                    countQuantidadeEmprestimos -= 1;
-                    if (countQuantidadeEmprestimos === 0) {
-                        console.log('Não há mais empréstimos a serem pagos!');
-                    }
-                    else {
-                        console.log("Ainda h\u00E1 " + countQuantidadeEmprestimos + " a serem pagos, ou seja, R" + dinheiroTotalEmprestadoPelaMae + ".");
-                    }
-                    console.log('');
-                }
-                // REALIZAÇÃO DE COMPRAS
-                if (dias % 5 === 0) {
-                    var valorDaCompra = pessoa.CalculaValorDaCompra();
-                    var salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
-                    console.log("Sal\u00E1rio acumulado na carteira: R$" + salarioAntesDaCompra);
-                    console.log('');
-                    console.log(' -------------------------------------------MERCADO-------------------------------------------- ');
-                    if (salarioAntesDaCompra >= valorDaCompra) {
-                        pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                        console.log("O valor calculado para a realiza\u00E7\u00E3o desta compra \u00E9 de R$" + valorDaCompra + ".");
-                        console.log("Compra efetivada com sucesso. Saldo p\u00F3s compra: [R$" + salarioAntesDaCompra + " - R$" + valorDaCompra + " = R$ " + pessoa.ObterSaldoCarteira() + "]");
-                    }
-                    else {
-                        console.log("Saldo insuficiente. O c\u00E1lculo do valor da compra desejada \u00E9 de R$" + valorDaCompra + ".");
-                        dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-                        countQuantidadeEmprestimos += 1;
-                        var saldoAposEmprestimo = pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
-                        console.log("Portanto, um empr\u00E9stimo de R$" + valorDoEmprestimo + " \u00E9 realizado, totalizando um total de " + countQuantidadeEmprestimos + " empr\u00E9stimo(s) feitos.");
-                        console.log("Saldo atualizado p\u00F3s empr\u00E9stimo: [R$" + pessoa.ObterSaldoCarteira() + "]");
-                        if (pessoa.ObterSaldoCarteira() >= valorDaCompra) {
-                            pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                            console.log("Desta forma, foi poss\u00EDvel realizar a compra. O saldo atual \u00E9 de: [R$" + pessoa.ObterSaldoCarteira() + "] ");
-                        }
-                        else {
-                            pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
-                            dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
-                            countQuantidadeEmprestimos += 1;
-                            console.log("Ainda n\u00E3o foi poss\u00EDvel realizar a compra. Outro empr\u00E9stimo foi efetuado.");
-                            console.log("H\u00E1 um total de " + countQuantidadeEmprestimos + " empr\u00E9stimos adquiridos, ou seja, R$" + dinheiroTotalEmprestadoPelaMae + " em d\u00EDvida.");
-                        }
-                    }
-                    console.log(' ---------------------------------------------------------------------------------------------- ');
-                    console.log('');
-                }
-                this.ValidarDiaDeDoacao(dias, pessoa);
+                this.ValidarDiaDeTrabalho(pessoa, dias, meses);
+                this.ValidarIdaAoMercado(pessoa, dias);
+                this.ValidarDiaDeDoacao(pessoa, dias);
+                this.ValidarPedidoEmprestimo;
+                this.ValidarPagamentoEmprestimo(pessoa);
             }
         }
     };
@@ -96,23 +44,79 @@ var CicloDaVida = /** @class */ (function () {
         }
         return false;
     };
-    CicloDaVida.prototype.ValidarDiaDeDoacao = function (diaDoMes, pessoa) {
+    CicloDaVida.prototype.ValidarDiaDeTrabalho = function (pessoa, diaDoMes, mes) {
+        var salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), diaDoMes, mes, pessoa.ObterIdade());
+        pessoa.DefinirSaldoCarteira(salario);
+        console.log("[TRABALHO] Idade: " + pessoa.ObterIdade() + " anos | M\u00EAs: " + mes + " | Dia: " + diaDoMes + " | Sal\u00E1rio recebido: R$" + salario);
+    };
+    CicloDaVida.prototype.ValidarIdaAoMercado = function (pessoa, diaDoMes) {
+        if (diaDoMes % 5 === 0) {
+            var valorDaCompra = pessoa.CalculaValorDaCompra();
+            var salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
+            console.log("[SAL\u00C1RIO ACUMULADO] R$" + salarioAntesDaCompra);
+            console.log('\n');
+            if (salarioAntesDaCompra >= valorDaCompra) {
+                pessoa.DefinirSaldoCarteira(-valorDaCompra);
+                console.log("[MERCADO] Valor da compra: R$" + valorDaCompra + " | Saldo p\u00F3s compra: R$" + salarioAntesDaCompra + " - R$" + valorDaCompra + " = R$ " + pessoa.ObterSaldoCarteira());
+                console.log('\n');
+            }
+            else {
+                console.log("[MERCADO] Saldo insuficiente para compra.");
+                console.log('\n');
+                // this.ValidarPedidoEmprestimo(pessoa, valorDaCompra);
+            }
+        }
+    };
+    CicloDaVida.prototype.ValidarDiaDeDoacao = function (pessoa, diaDoMes) {
         var saldoMinimoParaDoar = 300;
         var valorParaDoacao = 50;
         if (diaDoMes === 30) {
-            console.log('');
-            console.log(' -------------------------------------------CARIDADE------------------------------------------- ');
             if (pessoa.ObterSaldoCarteira() >= saldoMinimoParaDoar) {
                 var saldoAnterior = pessoa.ObterSaldoCarteira();
                 this.AcaoSocial.ReceberDoacao(pessoa.ObterNome(), valorParaDoacao);
-                console.log("Nome do Doador: " + pessoa.ObterNome());
-                console.log("Valor da doa\u00E7\u00E3o: R$" + valorParaDoacao);
-                console.log("Valor saldo anterior: R$" + saldoAnterior);
                 pessoa.DefinirSaldoCarteira(-valorParaDoacao);
-                console.log("Saldo ap\u00F3s doa\u00E7\u00E3o: R$" + pessoa.ObterSaldoCarteira());
+                console.log("[CARIDADE] Nome do Doador: " + pessoa.ObterNome() + " | Valor da doa\u00E7\u00E3o: R$" + valorParaDoacao + " | Valor saldo anterior: R$" + saldoAnterior + " | Saldo ap\u00F3s doa\u00E7\u00E3o: R$" + pessoa.ObterSaldoCarteira());
+                console.log('\n');
             }
-            console.log(' ---------------------------------------------------------------------------------------------- ');
-            console.log('');
+        }
+    };
+    CicloDaVida.prototype.ValidarPedidoEmprestimo = function (pessoa, valorDaCompra) {
+        var dinheiroTotalEmprestadoPelaMae = 0;
+        var countQuantidadeEmprestimos = 0;
+        var valorDoEmprestimo = 200;
+        dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
+        countQuantidadeEmprestimos += 1;
+        var saldoAposEmprestimo = pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
+        console.log("Portanto, um empr\u00E9stimo de R$" + valorDoEmprestimo + " \u00E9 realizado, totalizando um total de " + countQuantidadeEmprestimos + " empr\u00E9stimo(s) feitos.");
+        console.log("Saldo atualizado p\u00F3s empr\u00E9stimo: [R$" + pessoa.ObterSaldoCarteira() + "]");
+        if (pessoa.ObterSaldoCarteira() >= valorDaCompra) {
+            pessoa.DefinirSaldoCarteira(-valorDaCompra);
+            console.log("Desta forma, foi poss\u00EDvel realizar a compra. O saldo atual \u00E9 de: [R$" + pessoa.ObterSaldoCarteira() + "] ");
+        }
+        else {
+            pessoa.DefinirSaldoCarteira(valorDoEmprestimo);
+            dinheiroTotalEmprestadoPelaMae += valorDoEmprestimo;
+            countQuantidadeEmprestimos += 1;
+            console.log("Ainda n\u00E3o foi poss\u00EDvel realizar a compra. Outro empr\u00E9stimo foi efetuado.");
+            console.log("H\u00E1 um total de " + countQuantidadeEmprestimos + " empr\u00E9stimos adquiridos, ou seja, R$" + dinheiroTotalEmprestadoPelaMae + " em d\u00EDvida.");
+        }
+    };
+    CicloDaVida.prototype.ValidarPagamentoEmprestimo = function (pessoa) {
+        var dinheiroTotalEmprestadoPelaMae = 0;
+        var countQuantidadeEmprestimos = 0;
+        var valorDoEmprestimo = 200;
+        if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae) {
+            console.log('\n');
+            console.log("[EMPR\u00C9STIMO] Saldo atual: R$" + pessoa.ObterSaldoCarteira());
+            pessoa.DefinirSaldoCarteira(-dinheiroTotalEmprestadoPelaMae);
+            countQuantidadeEmprestimos -= 1;
+            console.log("[EMPR\u00C9STIMO] Empr\u00E9stimo de: R$" + valorDoEmprestimo + " | Saldo p\u00F3s empr\u00E9stimo: R$" + pessoa.ObterSaldoCarteira());
+            if (countQuantidadeEmprestimos === 0) {
+                console.log('[EMPRÉSTIMO] Não há mais empréstimos a serem pagos.');
+            }
+            else {
+                console.log("[EMPR\u00C9STIMO] Quantidade de empr\u00E9stimos: " + countQuantidadeEmprestimos + " | Valor R" + dinheiroTotalEmprestadoPelaMae + ".");
+            }
         }
     };
     return CicloDaVida;
