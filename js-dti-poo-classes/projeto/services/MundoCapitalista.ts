@@ -33,8 +33,8 @@ export class MundoCapitalista {
     }
     
     public CalculaValorDaCompra(): number { 
-        const maxGastos = 50; 
-        const minGastos = 100;  
+        const maxGastos = 400; 
+        const minGastos = 500;  
 
         return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);        
     }

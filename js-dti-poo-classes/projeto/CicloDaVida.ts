@@ -64,27 +64,34 @@ class CicloDaVida {
     
     private ValidarIdaAoMercado(pessoa: Pessoa, diaDoMes: number): void {
         if(diaDoMes%5 === 0){
-            console.log('Chegou no mercado!');
+            console.log(`[SALDO NA CARTEIRA ATUALIZADO] R$${pessoa.ObterSaldoCarteira()}`);
+            console.log('\n');
+            console.log('[MERCADO] Chegou ao mercado.');
             const valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra(); 
             let salarioAntesDaCompra = pessoa.ObterSaldoCarteira(); 
-            console.log('\n');
 
             if(salarioAntesDaCompra >= valorDaCompra) {
                 pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                console.log(`[MERCADO: COMPRA REALIZADA] Valor da compra: R$${valorDaCompra} | Saldo pós compra: R$${salarioAntesDaCompra} - R$${valorDaCompra} = R$ ${pessoa.ObterSaldoCarteira()}`);
+                console.log(`[COMPRA REALIZADA] Valor da compra: R$${valorDaCompra}}`);
                 console.log('\n');
             }
             else {                  
-                console.log(`[MERCADO: SALDO INSUFICIENTE] O valor da compra de R${valorDaCompra} excede seu saldo de ${salarioAntesDaCompra}.`);
+                console.log(`[COMPRA NÃO AUTORIZADA] O valor da compra de R$${valorDaCompra} excede seu saldo.`);
                 console.log('\n');
+
                 this.dinheiroTotalEmprestadoPelaMae += this.valorDoEmprestimo;
-                console.log('Pegou o dinheiro emprestado da mãe.');
                 this.countQuantidadeEmprestimos += 1; 
+                console.log(`[EMPRÉSTIMO] Solicitou um empréstimo de R$${this.valorDoEmprestimo}. Total de ${this.countQuantidadeEmprestimos} empréstimos acumulados.`);
                 pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
+                console.log(`[SALDO NA CARTEIRA ATUALIZADO] R$${pessoa.ObterSaldoCarteira()} `);
                 this.ValidarIdaAoMercado(pessoa, diaDoMes);
             }
-        }  
+        } 
     }
+
+    // private SolicitarEmprestimo(pessoa: Pessoa, diaDoMes): void {
+
+    // }
 
     private ValidarDiaDeDoacao(pessoa: Pessoa, diaDoMes: number): void {        
         const saldoMinimoParaDoar = 300;
@@ -102,8 +109,6 @@ class CicloDaVida {
     }
     
     // private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
-    //     this.ValidarPedidoEmprestimo(pessoa);
-    //     // Dúvida
     //     let dinheiroTotalEmprestadoPelaMae = this.ValidarPedidoEmprestimo
 
     //     if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae){

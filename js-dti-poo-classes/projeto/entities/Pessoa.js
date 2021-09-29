@@ -50,11 +50,6 @@ var Pessoa = /** @class */ (function () {
     Pessoa.prototype.Envelhecer = function (anosDeVida) {
         this.Idade = this.Idade + anosDeVida;
     };
-    Pessoa.prototype.CalculaValorDaCompra = function () {
-        var maxGastos = 50;
-        var minGastos = 100;
-        return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);
-    };
     Pessoa.prototype.Emprestimo = function () {
         var valorEmprestimo = 200;
         this.Carteira = this.Carteira + valorEmprestimo;

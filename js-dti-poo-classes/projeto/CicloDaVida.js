@@ -7,7 +7,7 @@ var CicloDaVida = /** @class */ (function () {
     function CicloDaVida(acaoSocial, mundoCapitalista) {
         this.dinheiroTotalEmprestadoPelaMae = 0;
         this.countQuantidadeEmprestimos = 0;
-        this.valorDoEmprestimo = 30;
+        this.valorDoEmprestimo = 200;
         this.AcaoSocial = acaoSocial;
         this.MundoCapitalista = mundoCapitalista;
     }
@@ -52,26 +52,29 @@ var CicloDaVida = /** @class */ (function () {
     };
     CicloDaVida.prototype.ValidarIdaAoMercado = function (pessoa, diaDoMes) {
         if (diaDoMes % 5 === 0) {
-            console.log('Chegou no mercado!');
-            var valorDaCompra = pessoa.CalculaValorDaCompra();
-            var salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
+            console.log("[SALDO NA CARTEIRA ATUALIZADO] R$" + pessoa.ObterSaldoCarteira());
             console.log('\n');
+            console.log('[MERCADO] Chegou ao mercado.');
+            var valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra();
+            var salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
             if (salarioAntesDaCompra >= valorDaCompra) {
                 pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                console.log("[MERCADO: COMPRA REALIZADA] Valor da compra: R$" + valorDaCompra + " | Saldo p\u00F3s compra: R$" + salarioAntesDaCompra + " - R$" + valorDaCompra + " = R$ " + pessoa.ObterSaldoCarteira());
+                console.log("[COMPRA REALIZADA] Valor da compra: R$" + valorDaCompra + "}");
                 console.log('\n');
             }
             else {
-                console.log("[MERCADO: SALDO INSUFICIENTE] O valor da compra de R" + valorDaCompra + " excede seu saldo de " + salarioAntesDaCompra + ".");
+                console.log("[COMPRA N\u00C3O AUTORIZADA] O valor da compra de R$" + valorDaCompra + " excede seu saldo.");
                 console.log('\n');
                 this.dinheiroTotalEmprestadoPelaMae += this.valorDoEmprestimo;
-                console.log('Pegou o dinheiro emprestado da mãe.');
                 this.countQuantidadeEmprestimos += 1;
+                console.log("[EMPR\u00C9STIMO] Solicitou um empr\u00E9stimo de R$" + this.valorDoEmprestimo + ". Total de " + this.countQuantidadeEmprestimos + " empr\u00E9stimos acumulados.");
                 pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
                 this.ValidarIdaAoMercado(pessoa, diaDoMes);
             }
         }
     };
+    // private SolicitarEmprestimo(pessoa: Pessoa, diaDoMes): void {
+    // }
     CicloDaVida.prototype.ValidarDiaDeDoacao = function (pessoa, diaDoMes) {
         var saldoMinimoParaDoar = 300;
         var valorParaDoacao = 50;

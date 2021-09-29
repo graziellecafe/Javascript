@@ -17,15 +17,24 @@ var MundoCapitalista = /** @class */ (function () {
     }
     MundoCapitalista.prototype.Trabalhar = function (nomeTrabalhador, dia, mes, ano) {
         var minSalario = 1;
-        var maxSalario = 10;
+        var maxSalario = 100;
         var ganhoDoDia = Math.ceil(Math.random() * (maxSalario - minSalario) + minSalario);
         var trabalhador = new Trabalhador(nomeTrabalhador, ganhoDoDia, dia, mes, ano);
         this.ListaDeTrabalhadores.push(trabalhador);
         return ganhoDoDia;
     };
+    MundoCapitalista.prototype.CalculaValorDaCompra = function () {
+        var maxGastos = 400;
+        var minGastos = 500;
+        return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);
+    };
     return MundoCapitalista;
 }());
 exports.MundoCapitalista = MundoCapitalista;
+// Transformar o projeto em projeto node, posso transformar direto 
+// npm init ou npm package json
+// utilizar o npm install ... typescript
+// OLHAR KT! 
 // class Trabalhador {
 //     Nome: string; 
 //     Valor: number; 
