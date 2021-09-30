@@ -3,8 +3,7 @@ import { AcaoSocial } from "./services/AcaoSocial"
 import { MundoCapitalista } from "./services/MundoCapitalista"
 
 class CicloDaVida { 
-    private dinheiroTotalEmprestadoPelaMae = 0; 
-    private countQuantidadeEmprestimos = 0; 
+    private emprestimoTotalAPagar = 0; 
     private valorDoEmprestimo = 200;  
 
     private readonly AcaoSocial: AcaoSocial;
@@ -16,12 +15,13 @@ class CicloDaVida {
     }
 
     public Genesis(): void { 
-        const grazielle = Pessoa.Nascimento('Grazielle', 0)              
+        const grazielle = Pessoa.Nascimento('Grazielle', 0)                     
         this.CicloDaPessoa(grazielle);
     }
 
     private CicloDaPessoa(pessoa: Pessoa): void {
-        let vivo = true;         
+        let vivo = true; 
+        console.log(`[ INÍCIO ] Nome: ${pessoa.ObterNome()}`)        
         while (vivo) { 
             if (this.ValidarFaseAdulta(pessoa.ObterIdade())){
                 this.FaseDeVidaAdulta(pessoa); 
@@ -37,13 +37,12 @@ class CicloDaVida {
     }
 
     private FaseDeVidaAdulta(pessoa: Pessoa): void {
-        console.log('\n');
-        console.log('                   INÍCIO DO CICLO DA VIDA                   ');
         for (let meses = 1; meses <= 1; meses++){
             for (let dias = 1; dias < 31; dias++){          
                 this.Trabalhar(pessoa, dias, meses);
-                this.ValidarIdaAoMercado(pessoa, dias);             
+                this.Mercado(pessoa, dias);             
                 this.ValidarDiaDeDoacao(pessoa, dias);
+                this.ValidarPagamentoEmprestimo(pessoa);
             } 
         }        
     }
@@ -59,40 +58,54 @@ class CicloDaVida {
     private Trabalhar(pessoa: Pessoa, diaDoMes: number, mes: number): void {
         let salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), diaDoMes, mes, pessoa.ObterIdade());
         pessoa.DefinirSaldoCarteira(salario);
-        console.log(`[TRABALHO] Idade: ${pessoa.ObterIdade()} anos | Mês: ${mes} | Dia: ${diaDoMes} | Salário recebido: R$${salario}`);
+        console.log(`[ TRABALHO ] Idade: ${pessoa.ObterIdade()} anos | Mês: ${mes} | Dia: ${diaDoMes} | Salário recebido: R$${salario}`);
     }
     
-    private ValidarIdaAoMercado(pessoa: Pessoa, diaDoMes: number): void {
+    private Mercado(pessoa: Pessoa, diaDoMes: number): void {
         if(diaDoMes%5 === 0){
-            console.log(`[SALDO NA CARTEIRA ATUALIZADO] R$${pessoa.ObterSaldoCarteira()}`);
-            console.log('\n');
-            console.log('[MERCADO] Chegou ao mercado.');
-            const valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra(); 
-            let salarioAntesDaCompra = pessoa.ObterSaldoCarteira(); 
-
-            if(salarioAntesDaCompra >= valorDaCompra) {
-                pessoa.DefinirSaldoCarteira(-valorDaCompra);
-                console.log(`[COMPRA REALIZADA] Valor da compra: R$${valorDaCompra}}`);
-                console.log('\n');
-            }
-            else {                  
-                console.log(`[COMPRA NÃO AUTORIZADA] O valor da compra de R$${valorDaCompra} excede seu saldo.`);
-                console.log('\n');
-
-                this.dinheiroTotalEmprestadoPelaMae += this.valorDoEmprestimo;
-                this.countQuantidadeEmprestimos += 1; 
-                console.log(`[EMPRÉSTIMO] Solicitou um empréstimo de R$${this.valorDoEmprestimo}. Total de ${this.countQuantidadeEmprestimos} empréstimos acumulados.`);
-                pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
-                console.log(`[SALDO NA CARTEIRA ATUALIZADO] R$${pessoa.ObterSaldoCarteira()} `);
-                this.ValidarIdaAoMercado(pessoa, diaDoMes);
-            }
+            console.log(`[  SALDO  ] R$${pessoa.ObterSaldoCarteira()}`);
+            console.log('[ MERCADO ] Chegou ao mercado.');
+            const valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra();              
+            this.RealizaCompra(pessoa, valorDaCompra);
         } 
     }
+    
+    private RealizaCompra(pessoa: Pessoa, valorDaCompra: number): void {
+        let salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
+        if(salarioAntesDaCompra >= valorDaCompra) {
+            pessoa.DefinirSaldoCarteira(-valorDaCompra);
+            console.log(`[COMPRA REALIZADA] Valor da compra: R$${valorDaCompra} | Saldo pós compra: ${pessoa.ObterSaldoCarteira()}`);
+        }
+        else {                  
+            console.log(`[COMPRA NÃO AUTORIZADA] O valor da compra de R$${valorDaCompra} excede seu saldo de R${pessoa.ObterSaldoCarteira}.`);
+            this.emprestimoTotalAPagar += this.valorDoEmprestimo;
+            console.log(`[EMPRÉSTIMO] Solicitou um empréstimo de R$${this.valorDoEmprestimo}.`);
+            pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
+            this.RealizaCompra(pessoa, valorDaCompra);
+        }
+    }
 
-    // private SolicitarEmprestimo(pessoa: Pessoa, diaDoMes): void {
-
-    // }
-
+    private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
+        if (this.emprestimoTotalAPagar > 0){
+            console.log('\n');
+            
+            const valorQueDevo = this.emprestimoTotalAPagar; 
+            const saldoQueTenho = pessoa.ObterSaldoCarteira();
+            console.log(`[EMPRÉSTIMO] Saldo atual: R$${pessoa.ObterSaldoCarteira()} | Valor a pagar: R$${this.emprestimoTotalAPagar}`);
+            
+            if(saldoQueTenho > valorQueDevo){
+                pessoa.DefinirSaldoCarteira(-valorQueDevo);
+                this.emprestimoTotalAPagar = 0;  
+                console.log(`[ DÍVIDA QUITADA ] Saldo atual de R${pessoa.ObterSaldoCarteira()}`);               
+            }
+            else{
+                this.emprestimoTotalAPagar -= saldoQueTenho; 
+                pessoa.DefinirSaldoCarteira(-saldoQueTenho);
+                console.log(`[EMPRÉSTIMO] Há débitos a serem realizados no valor de R${this.emprestimoTotalAPagar}`);
+            }
+        }
+    }
+    
     private ValidarDiaDeDoacao(pessoa: Pessoa, diaDoMes: number): void {        
         const saldoMinimoParaDoar = 300;
         const valorParaDoacao = 50;  
@@ -108,24 +121,6 @@ class CicloDaVida {
         }
     }
     
-    // private ValidarPagamentoEmprestimo(pessoa: Pessoa): void {
-    //     let dinheiroTotalEmprestadoPelaMae = this.ValidarPedidoEmprestimo
-
-    //     if (dinheiroTotalEmprestadoPelaMae > 0 && pessoa.ObterSaldoCarteira() >= dinheiroTotalEmprestadoPelaMae){
-    //         console.log('\n');
-    //         console.log(`[EMPRÉSTIMO] Saldo atual: R$${pessoa.ObterSaldoCarteira()}`);            
-    //         pessoa.DefinirSaldoCarteira(-dinheiroTotalEmprestadoPelaMae);
-    //         countQuantidadeEmprestimos -= 1; 
-    //         console.log(`[EMPRÉSTIMO] Empréstimo de: R$${valorDoEmprestimo} | Saldo pós empréstimo: R$${pessoa.ObterSaldoCarteira()}`);
-            
-    //         if(countQuantidadeEmprestimos === 0){
-    //             console.log('[EMPRÉSTIMO] Não há mais empréstimos a serem pagos.');
-    //         }
-    //         else{
-    //             console.log(`[EMPRÉSTIMO] Quantidade de empréstimos: ${countQuantidadeEmprestimos} | Valor R${dinheiroTotalEmprestadoPelaMae}.`);
-    //         }
-    //     }
-    // }
 }
 
 new CicloDaVida(new AcaoSocial(), new MundoCapitalista()).Genesis(); 
