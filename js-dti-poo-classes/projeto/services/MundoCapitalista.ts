@@ -13,7 +13,6 @@ class Trabalhador {
         this.Ano = ano;
     }
 }
-
 export class MundoCapitalista {
     private ListaDeTrabalhadores: Array<Trabalhador>;
 
@@ -33,13 +32,12 @@ export class MundoCapitalista {
     }
     
     public CalculaValorDaCompra(): number { 
-        const maxGastos = 400; 
-        const minGastos = 500;  
+        const maxGastos = 50; 
+        const minGastos = 100;  
 
         return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);        
     }
 }
-
 
 // Transformar o projeto em projeto node, posso transformar direto 
 // npm init ou npm package json

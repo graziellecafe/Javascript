@@ -21,7 +21,8 @@ class CicloDaVida {
 
     private CicloDaPessoa(pessoa: Pessoa): void {
         let vivo = true; 
-        console.log(`[ INÍCIO ] Nome: ${pessoa.ObterNome()}`)        
+        console.log('\n');       
+        console.log(`[INÍCIO] Nome: ${pessoa.ObterNome()}`);
         while (vivo) { 
             if (this.ValidarFaseAdulta(pessoa.ObterIdade())){
                 this.FaseDeVidaAdulta(pessoa); 
@@ -31,7 +32,7 @@ class CicloDaVida {
 
             if(pessoa.ObterIdade() > 18){
                 vivo = false;
-                console.log(`A ${pessoa.ObterNome()} encerrou o ciclo da vida.`);
+                console.log(`[FIM DO CICLO DA VIDA] A ${pessoa.ObterNome()} encerrou o ciclo da vida.`);
             }
         }
     }
@@ -58,13 +59,13 @@ class CicloDaVida {
     private Trabalhar(pessoa: Pessoa, diaDoMes: number, mes: number): void {
         let salario = this.MundoCapitalista.Trabalhar(pessoa.ObterNome(), diaDoMes, mes, pessoa.ObterIdade());
         pessoa.DefinirSaldoCarteira(salario);
-        console.log(`[ TRABALHO ] Idade: ${pessoa.ObterIdade()} anos | Mês: ${mes} | Dia: ${diaDoMes} | Salário recebido: R$${salario}`);
+        console.log(`[TRABALHO] Idade: ${pessoa.ObterIdade()} anos | Mês: ${mes} | Dia: ${diaDoMes} | Salário recebido: R$${salario}`);
     }
     
     private Mercado(pessoa: Pessoa, diaDoMes: number): void {
         if(diaDoMes%5 === 0){
-            console.log(`[  SALDO  ] R$${pessoa.ObterSaldoCarteira()}`);
-            console.log('[ MERCADO ] Chegou ao mercado.');
+            console.log('\n');
+            console.log(`[MERCADO] Ida ao mercado. Saldo disponível de R$${pessoa.ObterSaldoCarteira()}`);
             const valorDaCompra = this.MundoCapitalista.CalculaValorDaCompra();              
             this.RealizaCompra(pessoa, valorDaCompra);
         } 
@@ -74,10 +75,10 @@ class CicloDaVida {
         let salarioAntesDaCompra = pessoa.ObterSaldoCarteira();
         if(salarioAntesDaCompra >= valorDaCompra) {
             pessoa.DefinirSaldoCarteira(-valorDaCompra);
-            console.log(`[COMPRA REALIZADA] Valor da compra: R$${valorDaCompra} | Saldo pós compra: ${pessoa.ObterSaldoCarteira()}`);
+            console.log(`[COMPRA REALIZADA] Valor da compra: R$${valorDaCompra} | Saldo pós compra: R$${pessoa.ObterSaldoCarteira()}`);
         }
         else {                  
-            console.log(`[COMPRA NÃO AUTORIZADA] O valor da compra de R$${valorDaCompra} excede seu saldo de R${pessoa.ObterSaldoCarteira}.`);
+            console.log(`[COMPRA NÃO AUTORIZADA] O valor da compra de R$${valorDaCompra} excede seu saldo de R$${pessoa.ObterSaldoCarteira()}.`);
             this.emprestimoTotalAPagar += this.valorDoEmprestimo;
             console.log(`[EMPRÉSTIMO] Solicitou um empréstimo de R$${this.valorDoEmprestimo}.`);
             pessoa.DefinirSaldoCarteira(this.valorDoEmprestimo);
@@ -96,12 +97,12 @@ class CicloDaVida {
             if(saldoQueTenho > valorQueDevo){
                 pessoa.DefinirSaldoCarteira(-valorQueDevo);
                 this.emprestimoTotalAPagar = 0;  
-                console.log(`[ DÍVIDA QUITADA ] Saldo atual de R${pessoa.ObterSaldoCarteira()}`);               
+                console.log(`[DÍVIDA QUITADA] Saldo atual de R${pessoa.ObterSaldoCarteira()}`);               
             }
             else{
                 this.emprestimoTotalAPagar -= saldoQueTenho; 
                 pessoa.DefinirSaldoCarteira(-saldoQueTenho);
-                console.log(`[EMPRÉSTIMO] Há débitos a serem realizados no valor de R${this.emprestimoTotalAPagar}`);
+                console.log(`[DÉBITOS] Há débitos a serem realizados no valor de R$${this.emprestimoTotalAPagar}`);
             }
         }
     }

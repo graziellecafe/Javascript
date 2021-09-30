@@ -24,8 +24,8 @@ var MundoCapitalista = /** @class */ (function () {
         return ganhoDoDia;
     };
     MundoCapitalista.prototype.CalculaValorDaCompra = function () {
-        var maxGastos = 400;
-        var minGastos = 500;
+        var maxGastos = 50;
+        var minGastos = 100;
         return Math.ceil(Math.random() * (maxGastos - minGastos) + minGastos);
     };
     return MundoCapitalista;
